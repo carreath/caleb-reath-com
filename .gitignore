@@ -1,42 +1,60 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+.gradle
+/build/
 
-# compiled output
-/dist
-/tmp
-/out-tsc
+# Ignore Gradle GUI config
+gradle-app.setting
 
-# dependencies
-/node_modules
+# Cache of project
+.gradletasknamecache
 
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+#All dot files
+.*
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+## File-based project format:
+*.iws
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-testem.log
-/typings
+## Plugin-specific files:
 
-# e2e
-/e2e/*.js
-/e2e/*.map
+# IntelliJ
+/out/
 
-# System Files
-.DS_Store
-Thumbs.db
+# *.iml
+# modules.xml
+### Java template
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+!.gitignore
+node_modules/
+
+package-lock.json

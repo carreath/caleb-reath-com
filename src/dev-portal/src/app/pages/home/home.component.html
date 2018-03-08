@@ -1,0 +1,7 @@
+﻿<div class="col-md-6 col-md-offset-3">
+    <h1>Hi {{currentUser.firstName}}!</h1>
+    <p>You're logged in with Angular 2!!</p>
+    <h3>All registered users:</h3>
+    <app-table (linkClickEvent)="linkEventHandler($event)" [tableData]="tableData"></app-table>
+    <p><a [routerLink]="['/login']">Logout</a></p>
+</div>

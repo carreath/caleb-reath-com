@@ -1,0 +1,17 @@
+<table class="table">
+  <thead>
+    <th *ngFor="let column of tableData.tableColumns, let i = index" class="{{ column.header_classes }}">
+      {{ column.header }}
+    </th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of tableData.items">
+      <td *ngFor="let column of tableData.tableColumns, let i = index" class="{{ column.header_classes }}">
+        <div [ngSwitch]="column.column_type">
+          <span *ngSwitchDefault>{{ render(item, column) }}</span>
+          <a *ngSwitchCase="'link'" (click)="linkClicked(render(item, column, column.link_href_renderer))">{{ render(item, column) }}</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
