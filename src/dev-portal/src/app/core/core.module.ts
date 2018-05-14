@@ -14,10 +14,13 @@ import {
   AuthenticationService,
   TestService
 } from './services/index';
+import { WINDOW_PROVIDERS } from './services/window.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    NgbModule
   ],
   declarations: [
     HeaderComponent,
@@ -36,7 +39,8 @@ export class CoreModule {
         UserService,
         AlertService,
         AuthenticationService,
-        TestService
+        TestService,
+        WINDOW_PROVIDERS
       ]
     };
   }

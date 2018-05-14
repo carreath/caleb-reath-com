@@ -10,11 +10,9 @@ import {
   FakeBackendInterceptor,
   AuthGuard
 } from './index';
-import { TableComponent } from './components/table/table.component';
 
 const components = [
-  AlertComponent,
-  TableComponent
+  AlertComponent
 ];
 
 @NgModule({

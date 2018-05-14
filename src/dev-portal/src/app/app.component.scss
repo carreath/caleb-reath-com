@@ -1,9 +1,16 @@
-.content {
-    width: 100%;
-    min-height: 100%;
-    padding: 56px 0px 40px 0px;
-}
-
 * {
     font-family: "Arial";
+}
+
+html,
+body{
+    height:100%;
+}
+
+.container{
+    flex: 1 100%;
+    flex-flow: row wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

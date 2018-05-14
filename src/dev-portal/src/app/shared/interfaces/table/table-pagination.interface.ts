@@ -11,3 +11,11 @@ export function emptyPagination(): Pagination {
         totalCount: 0
     };
 }
+
+export function copyPagination(other: Pagination): Pagination {
+  return {
+    page: other.page,
+    pageSize: other.pageSize,
+    totalCount: other.totalCount
+  };
+}

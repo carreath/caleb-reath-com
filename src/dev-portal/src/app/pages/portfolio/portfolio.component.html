@@ -1,0 +1,46 @@
+<img class="portfolio-background" src="./../../../assets/images/unb-1.jpg">
+<div class="container portfolio-container">
+  <div #Overview class="portfolio-header">
+    <img class="me-image" src="../../../assets/images/me.jpg">
+  </div>
+  
+  <div class="portfolio-list">
+    <div class="container">
+      <div #NavBar class="btn-group nav-buttons" [ngClass]="{'nav-top':localizeNavbarToTop}">
+          <label (click)="scroll(Overview)" [ngClass]="{'btn-danger':currentView !== 0,'btn-primary':currentView === 0}" class="btn-primary" ngbButtonLabel>
+            Overview
+          </label>
+          <label (click)="scroll(AboutMe)" [ngClass]="{'btn-danger':currentView !== 1,'btn-primary':currentView === 1}" class="btn-primary" ngbButtonLabel>
+            About Me
+          </label>
+          <label (click)="scroll(Skills)" [ngClass]="{'btn-danger':currentView !== 2,'btn-primary':currentView === 2}" class="btn-primary" ngbButtonLabel>
+            Skills
+          </label>
+          <label (click)="scroll(Experience)" [ngClass]="{'btn-danger':currentView !==3,'btn-primary':currentView === 3}" class="btn-primary" ngbButtonLabel>
+            Experience
+          </label>
+          <label (click)="scroll(Projects)" [ngClass]="{'btn-danger':currentView !== 4,'btn-primary':currentView === 4}" class="btn-primary" ngbButtonLabel>
+            Projects
+          </label>
+          <label (click)="scroll(ContactMe)" [ngClass]="{'btn-danger':currentView !== 5,'btn-primary':currentView === 5}" class="btn-primary" ngbButtonLabel>
+            Contact Me
+          </label>
+      </div>
+    </div>
+    <div #AboutMe class="portfolio-item">
+      <app-about-me></app-about-me>
+    </div>
+    <div #Skills class="portfolio-item">
+      <app-skills></app-skills>
+    </div>
+    <div #Experience class="portfolio-item">
+      <app-experience></app-experience>
+    </div>
+    <div #Projects class="portfolio-item">
+      <app-projects></app-projects>
+    </div>
+    <div #ContactMe class="portfolio-item">
+      <app-contact-me></app-contact-me>
+    </div>
+  </div>
+</div>
