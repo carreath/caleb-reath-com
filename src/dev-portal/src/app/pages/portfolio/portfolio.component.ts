@@ -23,7 +23,7 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   @HostListener("window:scroll", [])
   onWindowScroll() {
     const scrollY = this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
-    if (scrollY >= this.ContactMe.nativeElement.offsetTop - 200) {
+    if (scrollY >= this.ContactMe.nativeElement.offsetTop - 400) {
       this.currentView = 5;
     } else if (scrollY >= this.Projects.nativeElement.offsetTop - 200) {
       this.currentView = 4;
@@ -40,7 +40,7 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
     if (!this.localizeNavbarToTop) {
       this.navBarInitialOffsetY = this.NavBar.nativeElement.offsetTop;
     }
-    if (scrollY > this.navBarInitialOffsetY) {
+    if (scrollY > this.AboutMe.nativeElement.offsetTop) {
       this.localizeNavbarToTop = true;
     } else {
       this.localizeNavbarToTop = false;
@@ -53,15 +53,13 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
-    this.navBarInitialOffsetY = this.NavBar.nativeElement.offsetTop;
   }
 
   ngAfterViewInit() {
-    console.log(this.Projects);
   }
 
   public scroll(element) {
-    element.scrollIntoView({behavior: "smooth"});
+    element.scrollIntoView({behavior: "smooth", block: "start"});
   }
 
 }
