@@ -1,0 +1,14 @@
+<mat-grid-list class="component-body container" #Skills [@fade]="state" style="height: 100%; opacity: inherit;" cols="4" rowHeight="150px">
+  <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let skill of skills">
+    <mat-card>
+      <mat-card-content>
+        <p class="card-text">
+          {{ skill.title }}
+        </p>
+        <hr class="card-horiz-line" />
+        <p class="content-style">{{ skill.content }}</p>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+  

@@ -1,0 +1,22 @@
+<div class="full-height">
+    <div style="height: 300px; width: 300px; margin: auto" [@shrink]=shrinkState (@shrink.done)="shrinkDone()"> <!-- [@shrink]=shrinkState (@shrink.done)="shrinkDone()" -->
+        <div class="an-4" style="height: inherit; width: 100px; margin: auto; position: absolute; transform: translate(100px) rotateZ(0deg)">
+            <div class="an-7" style="height: 100px; width: 100px; position: absolute;">
+                <img class="an-1" style="position: absolute; width: 100px;" src="./assets/img/angular-icon.png">
+            </div>
+        </div>
+        <div class="an-5" style="height: inherit; width: 100px; margin: auto; position: absolute; transform: translate(100px) rotateZ(120deg)">
+            <div class="an-8" style="height: 100px; width: 100px; position: absolute;">
+                <img class="an-2" style="position: absolute; width: 100px" src="./assets/img/google-cloud-icon.png">
+            </div>
+        </div>
+        <div class="an-6" style="height: inherit; width: 100px; margin: auto; position: absolute; transform: translate(100px) rotateZ(240deg)">
+            <div class="an-9" style="height: 100px; width: 100px; position: absolute;">
+                <img class="an-3" style="position: absolute; width: 100px" src="./assets/img/firebase-icon.png"> <!-- [@spin]="spinState" -->
+            </div>
+        </div>
+    </div>
+    <h3>I am looking great.</h3>
+    <button (click)=shrink()>Shrink</button>
+    <div style="bottom: 0px; height: 100px"><button>About Me</button></div>
+</div>
