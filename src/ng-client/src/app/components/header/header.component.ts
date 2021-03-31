@@ -42,8 +42,10 @@ export class HeaderComponent implements OnInit {
     console.log(link)
     this.scrollToComponent.emit(link);
   }
-  import anime from 'animejs/lib/anime.es';
-  ngOnInit() {}
+
+  ngOnInit() {
+    
+  }
 
   constructor(fb: FormBuilder) {
     this.options = fb.group({
