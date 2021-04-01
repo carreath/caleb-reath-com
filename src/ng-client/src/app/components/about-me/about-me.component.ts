@@ -28,7 +28,7 @@ export class AboutMeComponent implements OnInit {
   constructor(private dataService: DataService) { }
  
   ngOnInit() {
-    this.columnCount = (window.innerWidth <= 400) ? 2 : 6;
+    this.columnCount = (window.innerWidth <= 400) ? 2 : 4;
     console.log(this.columnCount);
     this.$profile = this.dataService.createCollection('profile');
   }
@@ -40,7 +40,7 @@ export class AboutMeComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event']) 
   onScroll(event) {
-    if (this.state === "hidden" && this.this_component.nativeElement.getBoundingClientRect().y <= window.innerHeight * 0.8) {
+    if (this.state === "hidden" && this.this_component.nativeElement.getBoundingClientRect().y <= window.innerHeight * 0.4) {
       this.state = "show";
     } else if (this.state === "show" && this.this_component.nativeElement.getBoundingClientRect().y >= window.innerHeight) {
       this.state = "hidden";
@@ -49,6 +49,6 @@ export class AboutMeComponent implements OnInit {
 
   onResize(event) {
     console.log(this.columnCount);
-    this.columnCount = (event.target.innerWidth <= 400) ? 2 : 6;
+    this.columnCount = (event.target.innerWidth <= 400) ? 2 : 4;
   }
 }

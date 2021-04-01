@@ -1,9 +1,18 @@
-<app-home></app-home>
-<app-header (scrollToComponent)="scrollTo($event)"></app-header>
-<div class="container">
-    <app-about-me></app-about-me>
-    <app-projects-list></app-projects-list>
-    <app-skills-list></app-skills-list>
-    <app-tools-list></app-tools-list>
-    <app-contact-form></app-contact-form>
-</div>
+
+    <div class="mat-card" style="height: 100%; width: 100%; position: fixed; z-index: -10000;"></div>
+    <div style="position: fixed;">
+        <button mat-icon-button [matMenuTriggerFor]="menu" mdTooltip="Change theme"><mat-icon>format_color_fill</mat-icon></button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="changeTheme('light-theme')">Light</button>
+            <button mat-menu-item (click)="changeTheme('dark-theme')">Dark</button>
+        </mat-menu>
+    </div>
+    <app-home style="height: 100%"></app-home>
+    <app-header (scrollToComponent)="scrollTo($event)"></app-header>
+    <div class="container mat-card">
+        <app-about-me></app-about-me>
+        <app-projects-list></app-projects-list>
+        <app-skills-list></app-skills-list>
+        <app-tools-list></app-tools-list>
+        <app-contact-form></app-contact-form>
+    </div>

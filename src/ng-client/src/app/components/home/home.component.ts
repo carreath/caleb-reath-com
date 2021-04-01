@@ -2,6 +2,8 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
 import { Component, OnInit } from '@angular/core';
 
 import anime from 'animejs/lib/anime.es';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { ThemingService } from 'src/app/services/theming.service';
 
 @Component({
   selector: 'app-home',
@@ -54,10 +56,44 @@ import anime from 'animejs/lib/anime.es';
   ]
 })
 export class HomeComponent implements OnInit {
+  themingSubscription: Subscription;
+
+  isLight = true;
+
   _state: string = 'spin';
   _shrinkState: string = "default"
 
+  animationContainerTimeline = null;
+  animationGroupTimeline = null;
+  animationItemTimelines = [];
+
+  constructor(private themingService: ThemingService) {}
+
   ngOnInit(): void {
+    this.themingSubscription = this.themingService.theme.subscribe((theme: string) => {
+      console.log(theme)
+      this.isLight = theme === "light-theme";
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.startSpinAnimation();
+  }
+
+  startSpinAnimation(duration = 1000, easeFunction = "spring(1, 80, 10, 0)") {
+    this.stopAnimationContainerAndChildren();
+
+    this.animationContainerSpin(duration, easeFunction);
+    this.animationGroupSpin(duration, easeFunction);
+    this.animationItemSpin(); 
+  }
+
+  stopAnimationContainerAndChildren() {
+    this.animationContainerTimeline?.pause();
+    this.animationGroupTimeline?.pause();
+    this.animationItemTimelines.forEach(itemTimeline => {
+      itemTimeline?.pause();
+    });
   }
 
   get spinState() {
@@ -71,154 +107,87 @@ export class HomeComponent implements OnInit {
     this._shrinkState = "shrink";
   }
 
-  shrinkDone() {
-    this._shrinkState = "default";
+  shrinkDone(colour) {
+
   }
 
-  ngAfterViewInit(): void {
-    // Wrap every letter in a span
-    const textWrapper = document.querySelector('.an-1');
-    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-    anime.timeline({loop: true})
+  animationContainerSpin(duration, easeFunction) {
+    this.animationContainerTimeline = anime.timeline({loop: true})
     .add({
-      targets: '.an-1',
-      duration: 2000,
+      targets: '.animation-container',
+      rotateZ: [anime.stagger([120, 360]), anime.stagger([240, 480])], 
+      duration: duration,
+      easing: easeFunction
+    }).add({
+      targets: '.animation-container',
+      rotateZ: [anime.stagger([240, 480]), anime.stagger([360, 600])], 
+      duration: duration,
+      easing: easeFunction
+    }).add({
+      targets: '.animation-container',
+      rotateZ: [anime.stagger([360, 600]), anime.stagger([480, 720])], 
+      duration: duration,
+      easing: easeFunction
+    });
+  }
+
+  animationGroupSpin(duration, easeFunction) {
+    this.animationGroupTimeline = anime.timeline({loop: true})
+    .add({
+      targets: '.animation-group',
+      rotateZ: [anime.stagger([-120, -360]), anime.stagger([-240, -480])], 
+      duration: duration,
+      easing: easeFunction
+    }).add({
+      targets: '.animation-group',
+      rotateZ: [anime.stagger([-240, -480]), anime.stagger([-360, -600])], 
+      duration: duration,
+      easing: easeFunction
+    }).add({
+      targets: '.animation-group',
+      rotateZ: [anime.stagger([-360, -600]), anime.stagger([-480, -720])], 
+      duration: duration,
+      easing: easeFunction
+    });
+  }
+
+  animationItemSpin() {
+    this.animationItemTimelines[0] = anime.timeline({loop: true})
+    .add({
+      targets: '.animation-item-1',
+      duration: 1665,
       easing: 'easeInOutSine',
-      rotateZ: '1turn'
+      rotateZ: '-1turn'
+    }).add({
+      targets: '.animation-item-1',
+      duration: 1665,
+      easing: 'easeInOutSine',
+      rotateZ: '0turn'
     });
 
-    anime.timeline({loop: true})
+    this.animationItemTimelines[1] = anime.timeline({loop: true})
     .add({
-      targets: '.an-2',
-      duration: 1500,
+      targets: '.animation-item-2',
+      duration: 1000,
       easing: 'spring(1, 80, 10, 0)',
       rotateZ: '1turn'
     }).add({
-      targets: '.an-2',
+      targets: '.animation-item-2',
       duration: 1000,
       easing: 'spring(1, 80, 10, 0)',
       rotateZ: '0turn'
     });
 
-    anime.timeline({loop: true})
+    this.animationItemTimelines[2] = anime.timeline({loop: true})
     .add({
-      targets: '.an-3',
+      targets: '.animation-item-3',
       rotateZ: [-60, 60], 
-      duration: 650,
+      duration: 500,
       easing: 'easeInOutSine'
     }).add({
-      targets: '.an-3',
+      targets: '.animation-item-3',
       rotateZ: [60, -60], 
-      duration: 650,
-      easing: 'easeInOutSine'
-    });
-
-    anime.timeline({loop: true})
-    .add({
-      targets: '.an-4',
-      rotateZ: [0, 120], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.an-4',
-      rotateZ: [120, 240], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.an-4',
-      rotateZ: [240, 360], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    });
-
-    anime.timeline({loop: true})
-    .add({
-      targets: '.an-5',
-      rotateZ: [120, 240], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.an-5',
-      rotateZ: [240, 360], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.an-5',
-      rotateZ: [0, 120], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    });
-
-    anime.timeline({loop: true})
-    .add({
-      targets: '.an-6',
-      rotateZ: [240, 360], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.an-6',
-      rotateZ: [0, 120], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.an-6',
-      rotateZ: [120, 240], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    });
-
-    anime.timeline({loop: true})
-    .add({
-      targets: '.an-7',
-      rotateZ: [0, -120], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.an-7',
-      rotateZ: [-120, -240], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.an-7',
-      rotateZ: [-240, -360], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    });
-
-    anime.timeline({loop: true})
-    .add({
-      targets: '.an-8',
-      rotateZ: [-120, -240], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.an-8',
-      rotateZ: [-240, -360], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.an-8',
-      rotateZ: [0, -120], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    });
-
-    anime.timeline({loop: true})
-    .add({
-      targets: '.an-9',
-      rotateZ: [-240, -360], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.an-9',
-      rotateZ: [0, -120], 
-      duration: 1000,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.an-9',
-      rotateZ: [-120, -240], 
-      duration: 1000,
+      duration: 500,
       easing: 'easeInOutSine'
     });
   }

@@ -13,8 +13,6 @@ mat-toolbar[color="warn"] {
     align-items: center;
     justify-content: center;
     width: 200px;
-    height: 100%;
-    background: rgba(255, 0, 0, 0.5);
     position: absolute;
 }
 .example-container {
@@ -31,7 +29,14 @@ mat-toolbar[color="warn"] {
     position: absolute;
     right: 10%;
     font-family: system-ui;
-    color: white;
     font-size: larger;
     font-weight: 600;
+}
+
+.mat-drawer-inner-container {
+    display: flex !important;
+}
+
+.mat-drawer-side {
+    border-right: none !important;
 }

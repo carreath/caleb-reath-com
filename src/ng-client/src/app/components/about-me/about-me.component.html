@@ -1,15 +1,27 @@
-<mat-grid-list [gutterSize]="10" class="component-body container" #AboutMe [@fade]="state" [cols]="columnCount" rowHeight="1:2" (window:resize)="onResize($event)">
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <img src="./assets/img/avatar.png" alt="Avatar">
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <div><b style="width: 100%; align-items: left;">Caleb Reath</b></div>
-            <div><p style="width: 100%; align-items: left;">Bachelor of Computer Science</p></div>
-            <div><p style="width: 100%; align-items: left;">Full Stack Web Developer</p></div>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="2">
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id interdum diam. Aliquam vestibulum mauris elementum vestibulum imperdiet. Ut placerat elit vel risus posuere, a consequat lorem accumsan. Nulla malesuada, eros sed laoreet consectetur, arcu elit viverra massa, at egestas nisl mi convallis justo. Ut odio sapien, vulputate nec eros in, mattis dapibus nulla. Quisque nibh metus, venenatis bibendum nisl porta, aliquet feugiat lacus. Vivamus sollicitudin convallis faucibus. Proin tristique lorem erat, nec facilisis quam vehicula id. Sed in erat hendrerit, posuere dui vel, accumsan nulla. Fusce porta nulla in mi dapibus, vitae facilisis arcu auctor. Sed eu maximus sem. Suspendisse sit amet orci eu magna fermentum fermentum posuere id leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque lobortis dui vitae leo venenatis, eu ornare leo tempor. Maecenas gravida augue ut elit semper, id elementum justo consequat.
-        </p>
-    </mat-grid-tile>
-</mat-grid-list>
+<div style="margin: auto; width: 75%">
+    <mat-grid-list [gutterSize]="10" class="component-body container" #AboutMe [@fade]="state" [cols]="columnCount" rowHeight="200px" (window:resize)="onResize($event)">
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <img src="./assets/img/avatar.png" alt="Avatar">
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div style="text-align: center;">
+                <b>Caleb Reath</b>
+                <br>
+                Bachelor of Computer Science
+                <br>
+                Full Stack Web Developer>
+            </div>
+        </mat-grid-tile>    
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="2">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id interdum diam. Aliquam vestibulum mauris elementum vestibulum imperdiet. Ut placerat elit vel risus posuere, a consequat lorem accumsan. Nulla malesuada, eros sed laoreet consectetur, arcu elit viverra massa, at egestas nisl mi convallis justo. Ut odio sapien, vulputate nec eros in, mattis dapibus nulla. Quisque nibh metus, venenatis bibendum nisl porta, aliquet feugiat lacus. Vivamus sollicitudin convallis faucibus. Proin tristique lorem erat, nec facilisis quam vehicula id. Sed in erat hendrerit, posuere dui vel, accumsan nulla. Fusce porta nulla in mi dapibus, vitae facilisis arcu auctor. Sed eu maximus sem. Suspendisse sit amet orci eu magna fermentum fermentum posuere id leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque lobortis dui vitae leo venenatis, eu ornare leo tempor. Maecenas gravida augue ut elit semper, id elementum justo consequat.
+            </p>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

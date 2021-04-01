@@ -2,12 +2,20 @@
 <mat-sidenav-container [@header_trigger]="state" class="example-container">
     <mat-sidenav #sidenav mode="side" opened class="example-sidenav"
         [fixedInViewport]="true" [fixedTopGap]="0"
-        [fixedBottomGap]="0">
-        <div _ngcontent-lrp-c68="" style="height: 40px;padding-top: 15px;" class="ng-tns-c66-7"></div>
-        <div *ngFor="let link of links" style="height: 40px; padding-top: 15px;">
-            <a class="side-nav-link" routerLinkActive="active" (click)="scrollTo(link.link)" >{{ link.title }}</a> 
-            <div style="top: 5px; margin-top: 15px; margin-left: 15px">
-                <img src="./assets/img/side-nav-dot.png" style="width: 10%"><img src="./assets/img/side-nav-bar.png" style="width: 80%; margin-left: 5px;">
+        [fixedBottomGap]="0" style="display: flex;">
+        <div style="display: flex; height: 100%; width: 100%">
+            <div style="height: fit-content; margin: auto">
+                <div *ngFor="let link of links" style="height: 40px; padding-top: 15px;">
+                    <a class="side-nav-link" routerLinkActive="active" (click)="scrollTo(link.link)" >{{ link.title }}</a> 
+                    <div style="top: 5px; margin-top: 15px; margin-left: 15px">
+                        <div *ngIf="isLight">
+                            <img src="./assets/img/side-nav-dot-light.png" style="width: 10%"><img src="./assets/img/side-nav-bar-light.png" style="width: 80%; margin-left: 5px;">
+                        </div>
+                        <div *ngIf="!isLight">
+                            <img src="./assets/img/side-nav-dot-dark.png" style="width: 10%"><img  src="./assets/img/side-nav-bar-dark.png" style="width: 80%; margin-left: 5px;">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </mat-sidenav>

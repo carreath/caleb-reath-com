@@ -1,6 +1,8 @@
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { ThemingService } from 'src/app/services/theming.service';
 
 @Component({
   selector: 'app-header',
@@ -26,6 +28,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   ]
 })
 export class HeaderComponent implements OnInit {
+  themingSubscription: Subscription;
+  isLight = true;
   state: string = "unlocked";
   options: FormGroup;
 
@@ -44,10 +48,13 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.themingSubscription = this.themingService.theme.subscribe((theme: string) => {
+      console.log(theme)
+      this.isLight = theme === "light-theme";
+    });
   }
 
-  constructor(fb: FormBuilder) {
+  constructor(private themingService: ThemingService, fb: FormBuilder) {
     this.options = fb.group({
       bottom: 0,
       fixed: false,

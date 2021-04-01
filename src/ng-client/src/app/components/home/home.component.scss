@@ -1,3 +1,20 @@
 .full-height {
     height: 100%;
+    display: flex;
+}
+
+.text {
+    margin: auto; 
+    height: fit-content; 
+    width: fit-content;
+    font-family: "Raleway";
+    color: black;
+    font-weight: bold;
+    font-size: xx-large;
+    line-height: 50px;
+    text-align: center;
+}
+
+.highlight {
+    color: red;
 }
