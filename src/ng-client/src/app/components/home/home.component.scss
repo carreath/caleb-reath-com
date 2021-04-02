@@ -1,6 +1,7 @@
-.full-height {
+.container {
     height: 100%;
     display: flex;
+    flex-direction: column;
 }
 
 .text {
@@ -10,11 +11,65 @@
     font-family: "Raleway";
     color: black;
     font-weight: bold;
-    font-size: xx-large;
-    line-height: 50px;
-    text-align: center;
+    font-size: 72px;
+    text-align: left;
 }
 
 .highlight {
     color: red;
+}
+
+.center-content {
+    display: flex;
+    flex-grow: 1;
+    padding-bottom: 2%;
+}
+
+.bottom-content {
+    display: flex;
+}
+
+.shrink-container {
+    height: 34px; 
+    width: 34px; 
+    position: absolute; 
+}
+
+.icon-container {
+    height: 34px; 
+    width: 34px; 
+    position: absolute; 
+}
+
+.angular-icon-container {
+    transform: rotateZ(-120deg)
+}
+
+.google-cloud-icon-container {
+    transform: rotateZ(-240deg)
+}
+
+.firebase-icon-container {
+    transform: rotateZ(0deg)
+}
+
+.letter {
+    opacity: 0;
+}
+
+.line1 {
+    line-height: 100px;
+}
+
+.line2 {
+    line-height: 55px;
+}
+
+.line3 {
+    line-height: 35px;
+    font-size: 20px;
+}
+
+.line4 {
+    font-size: 40px;
 }

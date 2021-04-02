@@ -1,4 +1,4 @@
-import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
+import { animate, keyframes, query, stagger, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 
 import anime from 'animejs/lib/anime.es';
@@ -52,6 +52,27 @@ import { ThemingService } from 'src/app/services/theming.service';
           transform: 'scale(1)'
         }))
       ])
+    ]),
+    trigger('FadeText', [
+      state('visible', style({ opacity: 1 })),
+      state('hidden', style({ opacity: 0 })),
+
+      transition('visible => hidden', [
+        style({ opacity: 1 }),
+        query('.letter', [
+          stagger(100, [
+            animate('500ms {{delay}}ms', style({ opacity: 0 }))
+          ])
+        ])        
+      ], {params: {delay: 0}}),
+      transition('hidden => visible', [
+        style({ opacity: 0 }),
+        query('.letter', [
+          stagger(80, [
+            animate('500ms 100ms ease-in', style({ opacity: 1 }))
+          ])
+        ])  
+      ], {params: {delay: 0}})
     ])
   ]
 })
@@ -59,6 +80,8 @@ export class HomeComponent implements OnInit {
   themingSubscription: Subscription;
 
   isLight = true;
+
+  textFadeState = "hidden";
 
   _state: string = 'spin';
   _shrinkState: string = "default"
@@ -77,7 +100,61 @@ export class HomeComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.startSpinAnimation();
+    let animation = anime({
+      targets: '.line1.letter',
+      opacity: 1, 
+      delay: anime.stagger(80, {start: 1000}), 
+      duration: 1000,
+      easing: "linear",
+      complete: () => {
+        this.startLine(1)
+      }
+    }); 
+    let animation2 = anime({
+      targets: '.line2.letter',
+      opacity: 1, 
+      delay: anime.stagger(80, {start: 2000}), 
+      duration: 1000,
+      easing: "linear"
+    }); 
+    let animation3 = anime({
+      targets: '.line3.letter',
+      opacity: 1, 
+      delay: anime.stagger(80, {start: 3000}), 
+      duration: 1000,
+      easing: "linear"
+    }); 
+    let animation4 = anime({
+      targets: '.line4.letter',
+      opacity: 1, 
+      delay: anime.stagger(80, {start: 4000}), 
+      duration: 1000,
+      easing: "linear"
+    });                
+  }
+
+  startLine(line) {
+    let stagger = 80;
+    let delay = 1000;
+    
+    if (line == 3) {
+      stagger = 30;
+      setTimeout(() => {
+        this.startLine(4);
+      }, 1500);
+    }
+
+    anime({
+      targets: '.line' + line + ' .letter',
+      opacity: 1, 
+      delay: anime.stagger(stagger, {start: delay}), 
+      duration: 1000,
+      easing: "linear",
+      complete: () => {
+        if (line > 2) return;
+        this.startLine(line+1);
+      }
+    });
   }
 
   startSpinAnimation(duration = 1000, easeFunction = "spring(1, 80, 10, 0)") {
@@ -109,6 +186,12 @@ export class HomeComponent implements OnInit {
 
   shrinkDone(colour) {
 
+  }
+
+  startAll() {
+    this.startSpinAnimation();
+    
+    this.textFadeState = "visible";
   }
 
   animationContainerSpin(duration, easeFunction) {
@@ -155,14 +238,22 @@ export class HomeComponent implements OnInit {
     this.animationItemTimelines[0] = anime.timeline({loop: true})
     .add({
       targets: '.animation-item-1',
-      duration: 1665,
+      duration: 1000,
       easing: 'easeInOutSine',
       rotateZ: '-1turn'
     }).add({
       targets: '.animation-item-1',
-      duration: 1665,
+      duration: 665,
+      easing: 'linear'
+    }).add({
+      targets: '.animation-item-1',
+      duration: 1000,
       easing: 'easeInOutSine',
       rotateZ: '0turn'
+    }).add({
+      targets: '.animation-item-1',
+      duration: 665,
+      easing: 'linear'
     });
 
     this.animationItemTimelines[1] = anime.timeline({loop: true})
@@ -181,14 +272,54 @@ export class HomeComponent implements OnInit {
     this.animationItemTimelines[2] = anime.timeline({loop: true})
     .add({
       targets: '.animation-item-3',
-      rotateZ: [-60, 60], 
-      duration: 500,
+      rotateZ: [0, -60], 
+      duration: 250,
       easing: 'easeInOutSine'
     }).add({
       targets: '.animation-item-3',
-      rotateZ: [60, -60], 
-      duration: 500,
+      rotateZ: [-60, 45], 
+      duration: 250,
       easing: 'easeInOutSine'
+    }).add({
+      targets: '.animation-item-3',
+      rotateZ: [45, -15], 
+      duration: 250,
+      easing: 'easeInOutSine'
+    }).add({
+      targets: '.animation-item-3',
+      rotateZ: [-15, 0], 
+      duration: 250,
+      easing: 'easeInOutSine'
+    }).add({
+      targets: '.animation-item-3',
+      rotateZ: [0, 0], 
+      duration: 665,
+      easing: 'linear'
+    }).add({
+      targets: '.animation-item-3',
+      rotateZ: [0, 60], 
+      duration: 250,
+      easing: 'easeInOutSine'
+    }).add({
+      targets: '.animation-item-3',
+      rotateZ: [60, -45], 
+      duration: 250,
+      easing: 'easeInOutSine'
+    }).add({
+      targets: '.animation-item-3',
+      rotateZ: [-45, 15], 
+      duration: 250,
+      easing: 'easeInOutSine'
+    }).add({
+      targets: '.animation-item-3',
+      rotateZ: [15, 0], 
+      duration: 250,
+      easing: 'easeInOutSine'
+    }).add({
+      targets: '.animation-item-3',
+      rotateZ: [0, 0], 
+      duration: 665,
+      easing: 'linear'
     });
   }
 }

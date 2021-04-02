@@ -1,25 +1,107 @@
-<div class="full-height">
-    <div class="text">
-        Hello, I'm <span class="accent">Caleb Reath</span>
-        <br>
-        <div *ngIf="isLight">I Am A Fullstack Web Developer</div>
-        <div *ngIf="!isLight">I Am A Fucking Alpha</div>
-        <br>
-        Welcome To My Portfolio
-        <div style="height: 300px; width: 300px; margin: auto"> <!-- [@shrink]=shrinkState (@shrink.done)="shrinkDone()" -->
-            <div class="animation-container" style="height: inherit; width: 100px; margin: auto; position: absolute; transform: translate(100px) rotateZ(0deg)">
-                <div class="animation-group" style="height: 100px; width: 100px; position: absolute;" [@shrink]=shrinkState (@shrink.done)="shrinkDone('red')">
-                    <img class="animation-item-1" style="position: absolute; width: 100px; transform: translate(-50px)" src="./assets/img/angular-icon.png">
+<div class="container">
+    <div class="center-content">
+        <div class="text">
+            <span class="line1">
+                <span class="letter">H</span>
+                <span class="letter">e</span>
+                <span class="letter">l</span>
+                <span class="letter">l</span>
+                <span class="letter">o</span>
+                <span class="letter">,</span>
+            </span>
+            <br>
+            <span class="line2">
+                <span class="letter">I</span>
+                <span class="letter">'</span>
+                <span class="letter">m</span>
+                <span class="letter">&nbsp;</span>
+                <span class="letter">C</span>
+                <span class="letter">a</span>
+                <span class="letter">l</span>
+                <span class="letter">e</span>
+                <span class="letter">b</span>
+                <span class="letter">&nbsp;</span>
+                <span class="letter">R</span>
+                <span class="letter">e</span>
+                <span class="letter">a</span>
+                <span class="letter">t</span>
+                <span class="letter">h</span>
+                <span class="letter">.</span>
+            </span>
+            <br>
+            <span class="line3">
+                <span class="letter">F</span>
+                <span class="letter">r</span>
+                <span class="letter">o</span>
+                <span class="letter">n</span>
+                <span class="letter">t</span>
+                <span class="letter">-</span>
+                <span class="letter">e</span>
+                <span class="letter">n</span>
+                <span class="letter">d</span>
+                <span class="letter">&nbsp;</span>
+                <span class="letter">/</span>
+                <span class="letter">&nbsp;</span>
+                <span class="letter">B</span>
+                <span class="letter">a</span>
+                <span class="letter">c</span>
+                <span class="letter">k</span>
+                <span class="letter">-</span>
+                <span class="letter">e</span>
+                <span class="letter">n</span>
+                <span class="letter">d</span>
+                <span class="letter">&nbsp;</span>
+                <span class="letter">/</span>
+                <span class="letter">&nbsp;</span>
+                <span class="letter">S</span>
+                <span class="letter">o</span>
+                <span class="letter">f</span>
+                <span class="letter">t</span>
+                <span class="letter">w</span>
+                <span class="letter">a</span>
+                <span class="letter">r</span>
+                <span class="letter">e</span>
+            </span>
+            <br>
+            <span class="line4">
+                <span class="letter">D</span>
+                <span class="letter">e</span>
+                <span class="letter">v</span>
+                <span class="letter">e</span>
+                <span class="letter">l</span>
+                <span class="letter">o</span>
+                <span class="letter">p</span>
+                <span class="letter">e</span>
+                <span class="letter">r</span>
+            </span>
+        </div>
+    </div>
+    <div class="bottom-content">
+        <button style="margin: auto;" (click)="startAll()">Start Animation</button>
+        <button style="margin: auto;">My Portfolio</button>
+    </div>
+</div>
+
+<div style="display: hidden">
+    <div style="height: 100px; width: 100px; margin: auto"> <!-- [@shrink]=shrinkState (@shrink.done)="shrinkDone()" -->
+        <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(120deg)">
+            <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
+                <div class="animation-group angular-icon-container icon-container">
+                    <img class="animation-item-1" style="position: absolute; width: 34px; transform: translate(-17px)" src="./assets/img/angular-icon.png">
                 </div>
             </div>
-            <div class="animation-container" style="height: inherit; width: 100px; margin: auto; position: absolute; transform: translate(100px) rotateZ(120deg)">
-                <div class="animation-group" style="height: 100px; width: 100px; position: absolute;" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
-                    <img class="animation-item-2" style="position: absolute; width: 100px; transform: translate(-50px)" src="./assets/img/google-cloud-icon.png">
+        </div>
+        <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(240deg)">
+            <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
+                <div class="animation-group google-cloud-icon-container icon-container">
+                    <img class="animation-item-2" style="position: absolute; width: 34px; transform: translate(-17px)" src="./assets/img/google-cloud-icon.png">
                 </div>
             </div>
-            <div class="animation-container" style="height: inherit; width: 100px; margin: auto; position: absolute; transform: translate(100px) rotateZ(240deg)">
-                <div class="animation-group" style="height: 100px; width: 100px; position: absolute;" [@shrink]=shrinkState (@shrink.done)="shrinkDone('green')">
-                    <img class="animation-item-3" style="position: absolute; width: 100px; transform: translate(-50px)" src="./assets/img/firebase-icon.png"> <!-- [@spin]="spinState" -->
+        </div>
+        <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(0deg)">
+            <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
+                <div class="animation-group firebase-icon-container icon-container">
+                    <img class="animation-item-3" style="position: absolute; width: 34px; transform: translate(-17px)" src="./assets/img/firebase-icon.png"> <!-- [@spin]="spinState" -->
                 </div>
             </div>
         </div>

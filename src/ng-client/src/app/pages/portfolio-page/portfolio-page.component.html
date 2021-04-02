@@ -8,11 +8,15 @@
         </mat-menu>
     </div>
     <app-home style="height: 100%"></app-home>
-    <app-header (scrollToComponent)="scrollTo($event)"></app-header>
-    <div class="container mat-card">
-        <app-about-me></app-about-me>
-        <app-projects-list></app-projects-list>
-        <app-skills-list></app-skills-list>
-        <app-tools-list></app-tools-list>
-        <app-contact-form></app-contact-form>
+    <div style="display: flex">
+        <div class="flex-header" [@header_trigger]="state">
+            <app-header (scrollToComponent)="scrollTo($event)"></app-header>
+        </div>
+        <div class="flex-container">
+            <app-about-me></app-about-me>
+            <app-projects-list></app-projects-list>
+            <app-skills-list></app-skills-list>
+            <app-tools-list></app-tools-list>
+            <app-contact-form></app-contact-form>
+        </div>
     </div>

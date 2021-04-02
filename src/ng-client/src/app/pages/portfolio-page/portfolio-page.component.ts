@@ -1,18 +1,40 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, ElementRef, HostBinding, Inject, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Inject, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ThemingService } from 'src/app/services/theming.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { trigger, state, style } from '@angular/animations';
 
 @Component({
   selector: 'app-portfolio-page',
   templateUrl: './portfolio-page.component.html',
-  styleUrls: ['./portfolio-page.component.scss']
+  styleUrls: ['./portfolio-page.component.scss'],
+  animations: [
+    trigger('header_trigger', [
+      state('relative', style({
+        position: "absolute",
+        top: "100%"
+      })),
+      state('sticky', style({
+        position: "fixed",
+        top: "0px"
+      }))
+    ]),
+    trigger('header_content_trigger', [
+      state('relative', style({
+      })),
+      state('sticky', style({
+      }))
+    ])
+  ]
 })
 export class PortfolioPageComponent implements OnInit {
   @HostBinding('class') public cssClass: string;
+  
   themingSubscription: Subscription;
   themes: string[];
+  state: string = "unlocked";
+
 
   constructor(
     private themingService: ThemingService,
@@ -25,15 +47,19 @@ export class PortfolioPageComponent implements OnInit {
       this.cssClass = theme;
       this.applyThemeOnOverlays();
     });
-  }
+  }  
 
   changeTheme(theme: string) {
     this.themingService.theme.next(theme);
   }
-
-
-
-
+  @HostListener('window:scroll', ['$event']) 
+  doSomething(event) {
+    if (window.pageYOffset >= window.innerHeight) {
+      this.state = "sticky"
+    } else {
+      this.state = "relative"
+    }
+  }
 
   /**
    * Apply the current theme on components with overlay (e.g. Dropdowns, Dialogs)

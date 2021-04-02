@@ -24,6 +24,7 @@ import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { MatIconModule } from '@angular/material/icon';
     NgxPageScrollModule,
     OverlayModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

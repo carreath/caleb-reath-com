@@ -1,18 +1,21 @@
 <!-- Animations implementation of position: sticky [@header_trigger]="state"-->
-<mat-sidenav-container [@header_trigger]="state" class="example-container">
+<mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav mode="side" opened class="example-sidenav"
         [fixedInViewport]="true" [fixedTopGap]="0"
         [fixedBottomGap]="0" style="display: flex;">
         <div style="display: flex; height: 100%; width: 100%">
             <div style="height: fit-content; margin: auto">
-                <div *ngFor="let link of links" style="height: 40px; padding-top: 15px;">
-                    <a class="side-nav-link" routerLinkActive="active" (click)="scrollTo(link.link)" >{{ link.title }}</a> 
-                    <div style="top: 5px; margin-top: 15px; margin-left: 15px">
-                        <div *ngIf="isLight">
-                            <img src="./assets/img/side-nav-dot-light.png" style="width: 10%"><img src="./assets/img/side-nav-bar-light.png" style="width: 80%; margin-left: 5px;">
-                        </div>
-                        <div *ngIf="!isLight">
-                            <img src="./assets/img/side-nav-dot-dark.png" style="width: 10%"><img  src="./assets/img/side-nav-bar-dark.png" style="width: 80%; margin-left: 5px;">
+                <div class="list-container" style="height: 100%; width: 100%">
+                    <!--div class="current-location"></div-->
+                    <div *ngFor="let link of links; let i = index" style="height: 40px; padding-top: 15px;">
+                        <a class="side-nav-link" routerLinkActive="active" (click)="scrollTo(link.link)" [ngStyle]="{'text-decoration': (i==nav) ? 'underline' : 'none'}">{{ link.title }}</a> 
+                        <div style="top: 5px; margin-top: 15px; margin-left: 15px">
+                            <div *ngIf="!isLight">
+                                <img src="./assets/img/side-nav-dot-light.png" style="width: 30px; height: 30px;"><img src="./assets/img/side-nav-bar-light.png" style="width: 65%; margin-left: 5px; height: 30px;">
+                            </div>
+                            <div *ngIf="!isLight">
+                                <img src="./assets/img/side-nav-dot-dark.png" style="width: 30px; height: 30px;"><img  src="./assets/img/side-nav-bar-dark.png" style="width: 65%; margin-left: 5px; height: 30px;">
+                            </div>
                         </div>
                     </div>
                 </div>

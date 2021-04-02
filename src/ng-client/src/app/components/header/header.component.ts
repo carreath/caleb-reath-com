@@ -24,6 +24,12 @@ import { ThemingService } from 'src/app/services/theming.service';
       })),
       state('sticky', style({
       }))
+    ]),
+    trigger('navigation', [
+      state('relative', style({
+      })),
+      state('sticky', style({
+      }))
     ])
   ]
 })
@@ -32,6 +38,7 @@ export class HeaderComponent implements OnInit {
   isLight = true;
   state: string = "unlocked";
   options: FormGroup;
+  nav = 0;
 
   links = [
     {title: "About Me", link: "AboutMe"},
@@ -63,6 +70,20 @@ export class HeaderComponent implements OnInit {
   }
   @HostListener('window:scroll', ['$event']) 
   doSomething(event) {
+    this.nav = 0;
+    if (window.pageYOffset > window.innerHeight + 600) {
+      this.nav = 1;
+    }
+    if (window.pageYOffset > window.innerHeight + 800) {
+      this.nav = 2;
+    }
+    if (window.pageYOffset > window.innerHeight + 1000) {
+      this.nav = 3;
+    }
+    if (window.pageYOffset > window.innerHeight + 1200) {
+      this.nav = 4;
+    }
+
     if (window.pageYOffset >= window.innerHeight) {
       this.state = "sticky"
     } else {
