@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+  max-width: 100%;
+  color: white;
+  overflow-x: hidden; }
 
 @import '~@angular/material/theming';
 
@@ -30,4 +33,52 @@ $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
 .dark-theme {
   @include angular-material-theme($dark-theme);
+}
+
+/* SCSS RGB */
+$rich-black-fogra-39: rgb(44, 44, 44);
+$eerie-black: rgb(58, 58, 58);
+$light-eerie-black: rgb(56, 56, 56);
+$blood-red: rgba(102, 7, 8, 1);
+$ruby-red: rgba(164, 22, 26, 1);
+$carnelian: rgba(186, 24, 27, 1);
+$imperial-red: rgba(229, 56, 59, 1);
+$silver-chalice: rgba(177, 167, 166, 1);
+$light-gray: rgba(211, 211, 211, 1);
+$cultured: rgba(245, 243, 244, 1);
+$white: rgba(255, 255, 255, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #0b090aff, #161a1dff, #660708ff, #a4161aff, #ba181bff, #e5383bff, #b1a7a6ff, #d3d3d3ff, #f5f3f4ff, #ffffffff);
+$gradient-right: linear-gradient(90deg, #0b090aff, #161a1dff, #660708ff, #a4161aff, #ba181bff, #e5383bff, #b1a7a6ff, #d3d3d3ff, #f5f3f4ff, #ffffffff);
+$gradient-bottom: linear-gradient(180deg, #0b090aff, #161a1dff, #660708ff, #a4161aff, #ba181bff, #e5383bff, #b1a7a6ff, #d3d3d3ff, #f5f3f4ff, #ffffffff);
+$gradient-left: linear-gradient(270deg, #0b090aff, #161a1dff, #660708ff, #a4161aff, #ba181bff, #e5383bff, #b1a7a6ff, #d3d3d3ff, #f5f3f4ff, #ffffffff);
+$gradient-top-right: linear-gradient(45deg, #0b090aff, #161a1dff, #660708ff, #a4161aff, #ba181bff, #e5383bff, #b1a7a6ff, #d3d3d3ff, #f5f3f4ff, #ffffffff);
+$gradient-bottom-right: linear-gradient(135deg, #0b090aff, #161a1dff, #660708ff, #a4161aff, #ba181bff, #e5383bff, #b1a7a6ff, #d3d3d3ff, #f5f3f4ff, #ffffffff);
+$gradient-top-left: linear-gradient(225deg, #0b090aff, #161a1dff, #660708ff, #a4161aff, #ba181bff, #e5383bff, #b1a7a6ff, #d3d3d3ff, #f5f3f4ff, #ffffffff);
+$gradient-bottom-left: linear-gradient(315deg, #0b090aff, #161a1dff, #660708ff, #a4161aff, #ba181bff, #e5383bff, #b1a7a6ff, #d3d3d3ff, #f5f3f4ff, #ffffffff);
+$gradient-radial: radial-gradient(#0b090aff, #161a1dff, #660708ff, #a4161aff, #ba181bff, #e5383bff, #b1a7a6ff, #d3d3d3ff, #f5f3f4ff, #ffffffff);
+
+.primary {
+  background-color: $rich-black-fogra-39;
+}
+
+.primary-accent {
+  background-color: $blood-red;
+}
+
+.secondary {
+  background-color: $eerie-black;
+}
+
+.light-secondary {
+  background-color: $light-eerie-black;
+}
+
+.secondary-accent {
+  background-color: $ruby-red;
+}
+
+.warn {
+  background-color: $rich-black-fogra-39;
 }

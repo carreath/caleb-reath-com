@@ -1,22 +1,23 @@
-
-    <div class="mat-card" style="height: 100%; width: 100%; position: fixed; z-index: -10000;"></div>
-    <div style="position: fixed;">
-        <button mat-icon-button [matMenuTriggerFor]="menu" mdTooltip="Change theme"><mat-icon>format_color_fill</mat-icon></button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="changeTheme('light-theme')">Light</button>
-            <button mat-menu-item (click)="changeTheme('dark-theme')">Dark</button>
-        </mat-menu>
-    </div>
+<div style="width: 100%; height: 100%" class="primary">
     <app-home style="height: 100%"></app-home>
-    <div style="display: flex">
-        <div class="flex-header" [@header_trigger]="state">
-            <app-header (scrollToComponent)="scrollTo($event)"></app-header>
-        </div>
-        <div class="flex-container">
-            <app-about-me></app-about-me>
-            <app-projects-list></app-projects-list>
-            <app-skills-list></app-skills-list>
-            <app-tools-list></app-tools-list>
-            <app-contact-form></app-contact-form>
-        </div>
+</div>
+<div style="width: 100%; height: 100%" >
+    <div class="flex-header" [@header_trigger]="state">
+        <app-header (scrollToComponent)="scrollTo($event)"></app-header>
     </div>
+    <div class="flex-container secondary">
+        <app-about-me style="width:100%"></app-about-me>
+    </div>
+    <div class="flex-container light-secondary">
+        <app-projects-list style="width:100%"></app-projects-list>
+    </div>
+    <div class="flex-container secondary">
+        <app-skills-list style="width:100%"></app-skills-list>
+    </div>
+    <div class="flex-container light-secondary">
+        <app-tools-list style="width:100%"></app-tools-list>
+    </div>
+    <div class="flex-container primary">
+        <app-contact-form style="width:100%"></app-contact-form>
+    </div>
+</div>

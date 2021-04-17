@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 .container {
     height: 100%;
     display: flex;
@@ -8,8 +10,7 @@
     margin: auto; 
     height: fit-content; 
     width: fit-content;
-    font-family: "Raleway";
-    color: black;
+    color: white;
     font-weight: bold;
     font-size: 72px;
     text-align: left;
@@ -72,4 +73,31 @@
 
 .line4 {
     font-size: 40px;
+}
+
+.grey-section-3 {
+    height: 0px;
+    -webkit-transform: rotate(
+    0deg
+    );
+    -ms-transform: rotate(0deg);
+    transform: rotate(
+    0deg
+    );
+}
+
+.diagonal-shape-3 {
+    position: static;
+    left: 0%;
+    top: 0%;
+    right: auto;
+    bottom: 0%;
+    overflow: visible;
+    width: 120%;
+    height: 500px;
+    -webkit-transform: rotate(-9deg);
+    -ms-transform: rotate(-9deg);
+    transform: rotate(-9deg);
+    transform-origin: left top;
+    border-top: $blood-red 2px solid;
 }

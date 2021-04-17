@@ -1,5 +1,5 @@
 import { animate, keyframes, query, stagger, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import anime from 'animejs/lib/anime.es';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -9,6 +9,7 @@ import { ThemingService } from 'src/app/services/theming.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('spin', [
       state('default', style({
@@ -157,169 +158,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  startSpinAnimation(duration = 1000, easeFunction = "spring(1, 80, 10, 0)") {
-    this.stopAnimationContainerAndChildren();
-
-    this.animationContainerSpin(duration, easeFunction);
-    this.animationGroupSpin(duration, easeFunction);
-    this.animationItemSpin(); 
-  }
-
-  stopAnimationContainerAndChildren() {
-    this.animationContainerTimeline?.pause();
-    this.animationGroupTimeline?.pause();
-    this.animationItemTimelines.forEach(itemTimeline => {
-      itemTimeline?.pause();
-    });
-  }
-
-  get spinState() {
-    return this._state;
-  }
-  get shrinkState() {
-    return this._shrinkState;
-  }
-
-  shrink() {
-    this._shrinkState = "shrink";
-  }
-
-  shrinkDone(colour) {
-
-  }
-
   startAll() {
-    this.startSpinAnimation();
-    
     this.textFadeState = "visible";
-  }
-
-  animationContainerSpin(duration, easeFunction) {
-    this.animationContainerTimeline = anime.timeline({loop: true})
-    .add({
-      targets: '.animation-container',
-      rotateZ: [anime.stagger([120, 360]), anime.stagger([240, 480])], 
-      duration: duration,
-      easing: easeFunction
-    }).add({
-      targets: '.animation-container',
-      rotateZ: [anime.stagger([240, 480]), anime.stagger([360, 600])], 
-      duration: duration,
-      easing: easeFunction
-    }).add({
-      targets: '.animation-container',
-      rotateZ: [anime.stagger([360, 600]), anime.stagger([480, 720])], 
-      duration: duration,
-      easing: easeFunction
-    });
-  }
-
-  animationGroupSpin(duration, easeFunction) {
-    this.animationGroupTimeline = anime.timeline({loop: true})
-    .add({
-      targets: '.animation-group',
-      rotateZ: [anime.stagger([-120, -360]), anime.stagger([-240, -480])], 
-      duration: duration,
-      easing: easeFunction
-    }).add({
-      targets: '.animation-group',
-      rotateZ: [anime.stagger([-240, -480]), anime.stagger([-360, -600])], 
-      duration: duration,
-      easing: easeFunction
-    }).add({
-      targets: '.animation-group',
-      rotateZ: [anime.stagger([-360, -600]), anime.stagger([-480, -720])], 
-      duration: duration,
-      easing: easeFunction
-    });
-  }
-
-  animationItemSpin() {
-    this.animationItemTimelines[0] = anime.timeline({loop: true})
-    .add({
-      targets: '.animation-item-1',
-      duration: 1000,
-      easing: 'easeInOutSine',
-      rotateZ: '-1turn'
-    }).add({
-      targets: '.animation-item-1',
-      duration: 665,
-      easing: 'linear'
-    }).add({
-      targets: '.animation-item-1',
-      duration: 1000,
-      easing: 'easeInOutSine',
-      rotateZ: '0turn'
-    }).add({
-      targets: '.animation-item-1',
-      duration: 665,
-      easing: 'linear'
-    });
-
-    this.animationItemTimelines[1] = anime.timeline({loop: true})
-    .add({
-      targets: '.animation-item-2',
-      duration: 1000,
-      easing: 'spring(1, 80, 10, 0)',
-      rotateZ: '1turn'
-    }).add({
-      targets: '.animation-item-2',
-      duration: 1000,
-      easing: 'spring(1, 80, 10, 0)',
-      rotateZ: '0turn'
-    });
-
-    this.animationItemTimelines[2] = anime.timeline({loop: true})
-    .add({
-      targets: '.animation-item-3',
-      rotateZ: [0, -60], 
-      duration: 250,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.animation-item-3',
-      rotateZ: [-60, 45], 
-      duration: 250,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.animation-item-3',
-      rotateZ: [45, -15], 
-      duration: 250,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.animation-item-3',
-      rotateZ: [-15, 0], 
-      duration: 250,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.animation-item-3',
-      rotateZ: [0, 0], 
-      duration: 665,
-      easing: 'linear'
-    }).add({
-      targets: '.animation-item-3',
-      rotateZ: [0, 60], 
-      duration: 250,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.animation-item-3',
-      rotateZ: [60, -45], 
-      duration: 250,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.animation-item-3',
-      rotateZ: [-45, 15], 
-      duration: 250,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.animation-item-3',
-      rotateZ: [15, 0], 
-      duration: 250,
-      easing: 'easeInOutSine'
-    }).add({
-      targets: '.animation-item-3',
-      rotateZ: [0, 0], 
-      duration: 665,
-      easing: 'linear'
-    });
   }
 }
