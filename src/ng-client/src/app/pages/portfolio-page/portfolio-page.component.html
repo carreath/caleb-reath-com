@@ -5,7 +5,7 @@
     <div class="flex-header" [@header_trigger]="state">
         <app-header (scrollToComponent)="scrollTo($event)"></app-header>
     </div>
-    <div class="flex-container secondary">
+    <div class="flex-container secondary" style="overflow: hidden;">
         <app-about-me style="width:100%"></app-about-me>
     </div>
     <div class="flex-container light-secondary">

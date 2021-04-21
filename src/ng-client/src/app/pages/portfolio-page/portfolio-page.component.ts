@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { ThemingService } from 'src/app/services/theming.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { trigger, state, style } from '@angular/animations';
+import * as $ from "jquery"
 
 @Component({
   selector: 'app-portfolio-page',
@@ -13,7 +14,7 @@ import { trigger, state, style } from '@angular/animations';
     trigger('header_trigger', [
       state('relative', style({
         position: "absolute",
-        top: "100%"
+        top: "85%"
       })),
       state('sticky', style({
         position: "fixed",
@@ -54,11 +55,16 @@ export class PortfolioPageComponent implements OnInit {
   }
   @HostListener('window:scroll', ['$event']) 
   doSomething(event) {
-    if (window.pageYOffset >= window.innerHeight) {
+    if (window.pageYOffset >= window.innerHeight * 0.85) {
       this.state = "sticky"
     } else {
       this.state = "relative"
     }
+
+   // $(".fade-item").each(item => {
+      //if ($(this).hasClass(""))
+    //})
+    //console.log()
   }
 
   /**

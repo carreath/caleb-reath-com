@@ -135,8 +135,8 @@ export class HomeComponent implements OnInit {
   }
 
   startLine(line) {
-    let stagger = 80;
-    let delay = 1000;
+    let stagger = 40;
+    let delay = 750;
     
     if (line == 3) {
       stagger = 30;

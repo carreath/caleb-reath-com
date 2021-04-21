@@ -11,11 +11,11 @@ import { DataService } from '../../services/data.service';
     trigger('fade', [
       state("hidden", style({opacity: 0})),
       transition('hidden => show', [
-        style({ opacity: 0 }),
-        animate(1000, style({ opacity: 1 }))
+        style({ opacity: 0, top: '100px' }),
+        animate(700, style({ opacity: 1, top: '0px' }))
       ]),
       transition('show => hidden',[
-        style({opacity: 0})
+        style({opacity: 0, top: '100px'})
       ]),
     ])
   ]
@@ -40,7 +40,7 @@ export class AboutMeComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event']) 
   onScroll(event) {
-    if (this.state === "hidden" && this.this_component.nativeElement.getBoundingClientRect().y <= window.innerHeight * 0.4) {
+    if (this.state === "hidden" && this.this_component.nativeElement.getBoundingClientRect().y <= window.innerHeight * 0.6) {
       this.state = "show";
     } else if (this.state === "show" && this.this_component.nativeElement.getBoundingClientRect().y >= window.innerHeight) {
       this.state = "hidden";

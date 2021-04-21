@@ -12,7 +12,7 @@ import { ThemingService } from 'src/app/services/theming.service';
     trigger('header_trigger', [
       state('relative', style({
         position: "absolute",
-        top: "100%"
+        top: "50%"
       })),
       state('sticky', style({
         position: "fixed",
@@ -84,7 +84,7 @@ export class HeaderComponent implements OnInit {
       this.nav = 4;
     }
 
-    if (window.pageYOffset >= window.innerHeight) {
+    if (window.pageYOffset >= window.innerHeight * 0.5) {
       this.state = "sticky"
     } else {
       this.state = "relative"

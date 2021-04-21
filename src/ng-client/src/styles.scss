@@ -7,7 +7,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
   overflow-x: hidden; }
 
 @import '~@angular/material/theming';
-
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@289&display=swap');
 @include mat-core();
 
 /************************
