@@ -33,7 +33,7 @@ mat-toolbar[color="warn"] {
     font-weight: 400;
     float: right;
     right: 25%;
-    text-decoration-color: var(--ruby-red);
+    text-decoration-color: var(--ruby-red) !important;
 }
 
 .mat-drawer-inner-container {
