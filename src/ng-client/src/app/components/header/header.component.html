@@ -8,7 +8,7 @@
                 <div class="list-container" style="height: 100%; width: 100%">
                     <!--div class="current-location"></div-->
                     <div *ngFor="let link of links; let i = index" style="height: 40px; padding-top: 15px;">
-                        <a class="side-nav-link" routerLinkActive="active" (click)="scrollTo(link.link)" [ngStyle]="{'text-decoration': (i==nav) ? 'underline' : 'none'}">{{ link.title }}</a> 
+                        <a class="side-nav-link" routerLinkActive="active" [@fade]="getState(i)" (click)="scrollTo(i)" [ngStyle]="{'text-decoration': (nav != -1 && i==nav) ? 'underline' : 'none'}">{{ link.title }}</a> 
                     </div>
                 </div>
             </div>

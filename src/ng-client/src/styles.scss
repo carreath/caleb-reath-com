@@ -37,6 +37,19 @@ $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 }
 
 /* SCSS RGB */
+:root { 
+  --rich-black-fogra-39: rgb(44, 44, 44);
+  --eerie-black: rgb(58, 58, 58);
+  --light-eerie-black: rgb(56, 56, 56);
+  --blood-red: rgba(102, 7, 8, 1);
+  --ruby-red: rgba(164, 22, 26, 1);
+  --carnelian: rgba(186, 24, 27, 1);
+  --imperial-red: rgba(229, 56, 59, 1);
+  --silver-chalice: rgba(177, 167, 166, 1);
+  --light-gray: rgba(211, 211, 211, 1);
+  --cultured: rgba(245, 243, 244, 1);
+  --white: rgba(255, 255, 255, 1);
+}
 $rich-black-fogra-39: rgb(44, 44, 44);
 $eerie-black: rgb(58, 58, 58);
 $light-eerie-black: rgb(56, 56, 56);

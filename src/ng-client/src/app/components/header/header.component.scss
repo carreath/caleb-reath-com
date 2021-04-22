@@ -29,10 +29,11 @@ mat-toolbar[color="warn"] {
 .side-nav-link {
     color: white;
     position: relative;
-    font-size: larger;
-    font-weight: 600;
+    font-size: 1.5em;
+    font-weight: 400;
     float: right;
     right: 25%;
+    text-decoration-color: var(--ruby-red);
 }
 
 .mat-drawer-inner-container {

@@ -1,10 +1,16 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Inject, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Inject, OnInit, Output, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ThemingService } from 'src/app/services/theming.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { trigger, state, style } from '@angular/animations';
 import * as $ from "jquery"
+import { IntroComponent } from 'src/app/components/intro/intro.component';
+import { EducationComponent } from 'src/app/components/education/education.component';
+import { ProjectsListComponent } from 'src/app/components/projects-list/projects-list.component';
+import { SkillsListComponent } from 'src/app/components/skills-list/skills-list.component';
+import { ContactFormComponent } from 'src/app/components/contact-form/contact-form.component';
+import { ToolsListComponent } from 'src/app/components/tools-list/tools-list.component';
 
 @Component({
   selector: 'app-portfolio-page',
@@ -31,6 +37,14 @@ import * as $ from "jquery"
 })
 export class PortfolioPageComponent implements OnInit {
   @HostBinding('class') public cssClass: string;
+
+  component_list = [];
+  @ViewChild(IntroComponent) intro_component;
+  @ViewChild(EducationComponent) education_component: ElementRef;
+  @ViewChild(ProjectsListComponent) projects_component: ElementRef;
+  @ViewChild(SkillsListComponent) skills_component: ElementRef;
+  @ViewChild(ToolsListComponent) tools_component: ElementRef;
+  @ViewChild(ContactFormComponent) contact_me_component: ElementRef;
   
   themingSubscription: Subscription;
   themes: string[];
@@ -49,6 +63,18 @@ export class PortfolioPageComponent implements OnInit {
       this.applyThemeOnOverlays();
     });
   }  
+
+  ngAfterViewInit() {
+    console.log(this.intro_component);
+    this.component_list = [
+      this.intro_component,
+      this.education_component,
+      this.projects_component,
+      this.skills_component,
+      this.tools_component,
+      this.contact_me_component
+    ];
+  }
 
   changeTheme(theme: string) {
     this.themingService.theme.next(theme);

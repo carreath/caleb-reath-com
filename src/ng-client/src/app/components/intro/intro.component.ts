@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import { DataService } from '../../services/data.service';
 
 @Component({
-  selector: 'app-about-me',
-  templateUrl: './about-me.component.html',
-  styleUrls: ['./about-me.component.scss'],
+  selector: 'app-intro',
+  templateUrl: './intro.component.html',
+  styleUrls: ['./intro.component.scss'],
   animations: [
     trigger('fade', [
       state("hidden", style({opacity: 0})),
@@ -20,8 +20,8 @@ import { DataService } from '../../services/data.service';
     ])
   ]
 })
-export class AboutMeComponent implements OnInit {
-
+export class IntroComponent implements OnInit {
+  @ViewChild("Intro", { read: ElementRef }) this_component: ElementRef;
   $profile: Observable<any>;
   columnCount = 4;
 
@@ -33,7 +33,6 @@ export class AboutMeComponent implements OnInit {
     this.$profile = this.dataService.createCollection('profile');
   }
 
-  @ViewChild("AboutMe", { read: ElementRef }) this_component: ElementRef;
 
   state: string = "hidden";
   init = true;

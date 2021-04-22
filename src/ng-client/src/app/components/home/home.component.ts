@@ -1,5 +1,5 @@
 import { animate, keyframes, query, stagger, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 
 import anime from 'animejs/lib/anime.es';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -78,6 +78,8 @@ import { ThemingService } from 'src/app/services/theming.service';
   ]
 })
 export class HomeComponent implements OnInit {
+  @ViewChild("Intro", { read: ElementRef }) this_component: ElementRef;
+  
   themingSubscription: Subscription;
 
   isLight = true;
@@ -105,7 +107,7 @@ export class HomeComponent implements OnInit {
       targets: '.line1.letter',
       opacity: 1, 
       delay: anime.stagger(80, {start: 1000}), 
-      duration: 1000,
+      duration: 600,
       easing: "linear",
       complete: () => {
         this.startLine(1)
@@ -114,29 +116,29 @@ export class HomeComponent implements OnInit {
     let animation2 = anime({
       targets: '.line2.letter',
       opacity: 1, 
-      delay: anime.stagger(80, {start: 2000}), 
-      duration: 1000,
+      delay: anime.stagger(80, {start: 1500}), 
+      duration: 600,
       easing: "linear"
     }); 
     let animation3 = anime({
       targets: '.line3.letter',
       opacity: 1, 
-      delay: anime.stagger(80, {start: 3000}), 
-      duration: 1000,
+      delay: anime.stagger(80, {start: 2000}), 
+      duration: 600,
       easing: "linear"
     }); 
     let animation4 = anime({
       targets: '.line4.letter',
       opacity: 1, 
-      delay: anime.stagger(80, {start: 4000}), 
-      duration: 1000,
+      delay: anime.stagger(80, {start: 2500}), 
+      duration: 600,
       easing: "linear"
     });                
   }
 
   startLine(line) {
-    let stagger = 40;
-    let delay = 750;
+    let stagger = 60;
+    let delay = 500;
     
     if (line == 3) {
       stagger = 30;

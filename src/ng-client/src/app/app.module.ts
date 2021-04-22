@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PortfolioPageComponent } from './pages/portfolio-page/portfolio-page.component';
-import { AboutMeComponent } from './components/about-me/about-me.component';
+import { IntroComponent } from './components/intro/intro.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProjectsListComponent } from './components/projects-list/projects-list.component';
@@ -25,18 +25,21 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EducationComponent } from './components/education/education.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutMeComponent,
+    IntroComponent,
     ContactFormComponent,
     HeaderComponent,
     ProjectsListComponent,
     SkillsListComponent,
     ToolsListComponent,
     PortfolioPageComponent,
-    HomeComponent
+    HomeComponent,
+    EducationComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import {MatDividerModule} from '@angular/material/divider';
     OverlayModule,
     MatMenuModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
