@@ -92,10 +92,8 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event']) 
   doSomething(event) {
-    console.log(this.component_list)
     this.nav = -1;
     this.component_list.forEach(component => {
-      console.log(component)
       if (component.this_component.nativeElement.getBoundingClientRect().top - window.innerHeight / 6 <= 0) {
         this.nav++;
       }

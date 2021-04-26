@@ -2,6 +2,8 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DataService } from '../../services/data.service';
+import * as $ from "jquery"
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-intro',
@@ -22,17 +24,21 @@ import { DataService } from '../../services/data.service';
 })
 export class IntroComponent implements OnInit {
   @ViewChild("Intro", { read: ElementRef }) this_component: ElementRef;
+  @ViewChild("IntroImageContainer", { read: ElementRef }) this_image_component: ElementRef;
   $profile: Observable<any>;
-  columnCount = 4;
+  columnCount = 3;
+  rowHeight = 400;
 
   constructor(private dataService: DataService) { }
  
   ngOnInit() {
-    this.columnCount = (window.innerWidth <= 400) ? 2 : 4;
-    console.log(this.columnCount);
     this.$profile = this.dataService.createCollection('profile');
   }
 
+  ngAfterViewInit() {
+    this.setColumnCount();
+    this.setImageSize();
+  }
 
   state: string = "hidden";
   init = true;
@@ -47,7 +53,19 @@ export class IntroComponent implements OnInit {
   }
 
   onResize(event) {
-    console.log(this.columnCount);
-    this.columnCount = (event.target.innerWidth <= 400) ? 2 : 4;
+    this.setColumnCount();
+    this.setImageSize();
+  }
+
+  setColumnCount() {
+    if (window.innerWidth <= 750) {
+      this.columnCount = 2;
+    } else {
+      this.columnCount = 3;
+    }
+  }
+
+  setImageSize() {
+    this.rowHeight = this.this_image_component.nativeElement.getBoundingClientRect().width;
   }
 }

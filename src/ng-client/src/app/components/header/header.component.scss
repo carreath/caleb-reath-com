@@ -8,7 +8,7 @@ mat-toolbar[color="warn"] {
     height: 56px;
     z-index: 10000;
 }
-.example-sidenav {
+.nav {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,7 +17,7 @@ mat-toolbar[color="warn"] {
     height: 100%;
     background-color: transparent;
 }
-.example-container {
+.nav-container {
     position: relative;
     background-color: transparent;
     bottom: 0px;
@@ -57,4 +57,11 @@ mat-toolbar[color="warn"] {
     border-radius: 7px;
     border: 1px #00000059;
     border-style: solid;
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 1200px) {
+    .nav-container {
+        display: none;
+    }
 }

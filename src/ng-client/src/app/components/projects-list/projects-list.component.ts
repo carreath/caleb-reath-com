@@ -133,8 +133,6 @@ export class ProjectsListComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event']) 
   onScroll(event) {
-    //console.log(this.this_component.nativeElement.getBoundingClientRect().y + " " + window.innerHeight * 0.2);
-    console.log(this.state)
     if (this.state === "hidden" && this.this_component.nativeElement.getBoundingClientRect().y <= window.innerHeight * 0.2) {
       console.log("show");
       this.state = "show";

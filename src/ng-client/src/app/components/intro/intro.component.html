@@ -1,51 +1,19 @@
-<mat-grid-list [gutterSize]="10" class="component-body container" #Intro [@fade]="state" [cols]="columnCount" rowHeight="400px" (window:resize)="onResize($event)">
+<mat-grid-list #Intro  [cols]="columnCount" [rowHeight]="rowHeight" [@fade]="state" (window:resize)="onResize($event)">
     <mat-grid-tile [colspan]="2" [rowspan]="1" class="fade-item">
-        <div class="my-image">
+        <div #IntroImageContainer class="image-body">
             <img src="./assets/img/Me.png" alt="Avatar">
         </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1" class="fade-item">
-        <div style="text-align: center;" class="name-body">
-            <b style="font-size: 2.5em !important; font-weight: 200; line-height: 2em;">Caleb Reath</b>
+        <div class="title-body">
+            <b class="name-body">Caleb Reath</b>
             <mat-divider class="name-divider secondary-accent"></mat-divider>
             Bachelor of Computer Science
             <br>
             Full Stack Web Developer
-            <div class="" style="">
-                <a href="https://github.com/carreath" target="_blank" class="">
-                    <span class="">
-                        <i aria-hidden="true" class="fad fa-github-square" style="font-size: 36px;"></i>
-                    </span>
-                </a>
-                <span class="v-tooltip v-tooltip--bottom"></span>
-                <span class="v-tooltip v-tooltip--bottom"></span>
-                <a href="https://www.linkedin.com/in/cameron-dahr-8a943a129/" target="_blank" class="v-btn v-btn--icon v-btn--round theme--light v-size--default" aria-haspopup="true" aria-expanded="false">
-                    <span class="v-btn__content">
-                        <i aria-hidden="true" class="v-icon notranslate fab fa-linkedin theme--light white--text" style="font-size: 36px;"></i>
-                    </span>
-                </a>
-                <span class="v-tooltip v-tooltip--bottom">
-
-                </span><a href="https://www.facebook.com/cameron.dahr.1" target="_blank" class="v-btn v-btn--icon v-btn--round theme--light v-size--default" aria-haspopup="true" aria-expanded="false">
-                    <span class="v-btn__content">
-                        <i aria-hidden="true" class="v-icon notranslate fab fa-facebook-square theme--light white--text" style="font-size: 36px;">
-                        </i>
-                    </span>
-                </a>
-                <span class="v-tooltip v-tooltip--bottom"></span>
-                <a href="https://letterboxd.com/Cam_Dahr/" target="_blank" class="v-btn v-btn--icon v-btn--round theme--light v-size--default" aria-haspopup="true" aria-expanded="false">
-                    <span class="v-btn__content">
-                        <div class="v-image v-responsive theme--light" style="max-width: 35px;">
-                            <div class="v-responsive__sizer" style="padding-bottom: 100%;"></div>
-                            <div class="v-image__image v-image__image--cover" style="background-image: url(&quot;https://i.imgur.com/GVXzUfZ.png&quot;); background-position: center center;"></div>
-                        <div class="v-responsive__content" style="width: 1024px;"></div>
-                        </div>
-                    </span>
-                </a>
-            </div>
         </div>
-    </mat-grid-tile>    
-    <mat-grid-tile [colspan]="3" [rowspan]="1" class="fade-item" style="align-items: baseline !important;">
+    </mat-grid-tile>  
+    <mat-grid-tile [colspan]="columnCount" [rowspan]="1" class="fade-item" style="align-items: baseline !important;">
         <p class="intro-body">
             Hello, my name is Caleb. I am a Full-Stack Web Developer currently employed at Tarka Labs. I am extremely passionate about programming and I often practice problem solving on Kattis. I graduated from the University of New Brunswick in May 2020 on the dean’s list with a Bachelor of Computer Science and a Minor in Mathematics.
         </p>

@@ -1,10 +1,10 @@
 <!-- Animations implementation of position: sticky [@header_trigger]="state"-->
-<mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" opened class="example-sidenav"
+<mat-sidenav-container class="nav-container">
+    <mat-sidenav #sidenav mode="side" opened class="nav"
         [fixedInViewport]="true" [fixedTopGap]="0"
         [fixedBottomGap]="0" style="display: flex;">
         <div style="display: flex; height: 100%; width: 100%">
-            <div style="height: fit-content; margin: auto;">
+            <div style="height: fit-content; margin: auto 40px auto auto;">
                 <div class="list-container" style="height: 100%; width: 100%">
                     <!--div class="current-location"></div-->
                     <div *ngFor="let link of links; let i = index" style="height: 40px; padding-top: 15px; cursor: pointer;">

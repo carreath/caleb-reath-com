@@ -8,15 +8,69 @@
   background-color: transparent;
   bottom: 0px;
   left: 0;
-  width: 30%;
+  width: 33%;
   top: 100%;
   height: 100%;
-  margin-left: 7%;
 }
 
-.flex-container {
+.component-container {
+  padding: 10px;
+  padding-right: 17%;
+  overflow-y: hidden; 
+}
+
+.flex-body {
   display: flex;
-  width: 57%;
-  padding: 0px 10% 0px 33%;
-  overflow-y:auto; 
+  padding: 0px 0px 0px 33%;
+  overflow-y: auto;
+  overflow-x: hidden; 
+  background-color: var(--eerie-black);
+  flex-direction: column;
+}
+
+.flex-footer {
+  display: flex;
+  width: 100%;
+  overflow-y: auto; 
+  background-color: var(--rich-black-fogra-39);
+  flex-direction: column;
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 1400px) {
+  .component-container {
+    padding: 10px 17% 10px 17%;
+  }
+  .flex-body {
+    padding: 0px 0px 0px 0px;
+  }
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 1200px) {
+  .component-container {
+    padding: 10px 13% 10px 13%;
+  }
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 1000px) {
+  .component-container {
+    padding: 10px 10% 10px 10%;
+  }
+}
+
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 900px) {
+  .component-container {
+    padding: 10px 7% 10px 7%;
+  }
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 800px) {
+  .component-container {
+    padding: 10px 5% 10px 5%;
+  }
 }
