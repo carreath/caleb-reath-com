@@ -27,7 +27,9 @@ export class IntroComponent implements OnInit {
   @ViewChild("IntroImageContainer", { read: ElementRef }) this_image_component: ElementRef;
   $profile: Observable<any>;
   columnCount = 3;
-  rowHeight = 400;
+  imageColumns = 2;
+  rowHeight = 100;
+  titleRowSpan = 4;
 
   constructor(private dataService: DataService) { }
  
@@ -36,8 +38,11 @@ export class IntroComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    console.log(this.this_image_component);
     this.setColumnCount();
-    this.setImageSize();
+    setTimeout(() => {
+      this.setImageSize()
+    });
   }
 
   state: string = "hidden";
@@ -45,6 +50,7 @@ export class IntroComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event']) 
   onScroll(event) {
+    console.log(this.this_component.nativeElement.getBoundingClientRect().y)
     if (this.state === "hidden" && this.this_component.nativeElement.getBoundingClientRect().y <= window.innerHeight * 0.6) {
       this.state = "show";
     } else if (this.state === "show" && this.this_component.nativeElement.getBoundingClientRect().y >= window.innerHeight) {
@@ -59,13 +65,18 @@ export class IntroComponent implements OnInit {
 
   setColumnCount() {
     if (window.innerWidth <= 750) {
-      this.columnCount = 2;
+      this.columnCount = 1;
+      this.imageColumns = 1;
+      this.titleRowSpan = 2;
     } else {
       this.columnCount = 3;
+      this.imageColumns = 2;
+      this.titleRowSpan = 4;
     }
   }
 
   setImageSize() {
-    this.rowHeight = this.this_image_component.nativeElement.getBoundingClientRect().width;
+    console.log(this.this_image_component.nativeElement.getBoundingClientRect().width / 4.0);
+    this.rowHeight = this.this_image_component.nativeElement.getBoundingClientRect().width / 4.0;
   }
 }

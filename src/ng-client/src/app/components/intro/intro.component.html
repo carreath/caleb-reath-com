@@ -1,10 +1,10 @@
 <mat-grid-list #Intro  [cols]="columnCount" [rowHeight]="rowHeight" [@fade]="state" (window:resize)="onResize($event)">
-    <mat-grid-tile [colspan]="2" [rowspan]="1" class="fade-item">
+    <mat-grid-tile [colspan]="imageColumns" [rowspan]="4" class="fade-item">
         <div #IntroImageContainer class="image-body">
             <img src="./assets/img/Me.png" alt="Avatar">
         </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1" class="fade-item">
+    <mat-grid-tile [colspan]="1" [rowspan]="titleRowSpan" class="fade-item">
         <div class="title-body">
             <b class="name-body">Caleb Reath</b>
             <mat-divider class="name-divider secondary-accent"></mat-divider>
@@ -13,7 +13,7 @@
             Full Stack Web Developer
         </div>
     </mat-grid-tile>  
-    <mat-grid-tile [colspan]="columnCount" [rowspan]="1" class="fade-item" style="align-items: baseline !important;">
+    <mat-grid-tile [colspan]="columnCount" [rowspan]="4" class="fade-item" style="align-items: baseline !important;">
         <p class="intro-body">
             Hello, my name is Caleb. I am a Full-Stack Web Developer currently employed at Tarka Labs. I am extremely passionate about programming and I often practice problem solving on Kattis. I graduated from the University of New Brunswick in May 2020 on the dean’s list with a Bachelor of Computer Science and a Minor in Mathematics.
         </p>

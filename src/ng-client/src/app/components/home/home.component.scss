@@ -58,21 +58,22 @@
 }
 
 .line1 {
-    line-height: 100px;
+    line-height: 1em;
 }
 
 .line2 {
-    line-height: 55px;
+    line-height: 1em;
 }
 
 .line3 {
-    line-height: 35px;
-    font-size: 20px;
+    line-height: 1.5em;
+    font-size: 0.33em;
     padding-left: 3px;
+    color: #868686;
 }
 
 .line4 {
-    font-size: 40px;
+    line-height: 1em;
 }
 
 .grey-section-3 {
@@ -84,6 +85,7 @@
     transform: rotate(
     0deg
     );
+    overflow-x: clip;
 }
 
 .diagonal-shape-3 {
@@ -92,7 +94,7 @@
     top: 0%;
     right: auto;
     bottom: 0%;
-    overflow: visible;
+    overflow: hidden;
     width: 120%;
     height: 500px;
     -webkit-transform: rotate(-9deg);
@@ -100,4 +102,18 @@
     transform: rotate(-9deg);
     transform-origin: left top;
     border-top: var(--blood-red) 2px solid;
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 1200px) {
+    .text {
+        font-size: 4em;
+    }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+    .text {
+        font-size: 3em;
+    }
 }
