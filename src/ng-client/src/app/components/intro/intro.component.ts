@@ -38,7 +38,6 @@ export class IntroComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.this_image_component);
     this.setColumnCount();
     setTimeout(() => {
       this.setImageSize()
@@ -50,7 +49,6 @@ export class IntroComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event']) 
   onScroll(event) {
-    console.log(this.this_component.nativeElement.getBoundingClientRect().y)
     if (this.state === "hidden" && this.this_component.nativeElement.getBoundingClientRect().y <= window.innerHeight * 0.6) {
       this.state = "show";
     } else if (this.state === "show" && this.this_component.nativeElement.getBoundingClientRect().y >= window.innerHeight) {
@@ -76,7 +74,6 @@ export class IntroComponent implements OnInit {
   }
 
   setImageSize() {
-    console.log(this.this_image_component.nativeElement.getBoundingClientRect().width / 4.0);
     this.rowHeight = this.this_image_component.nativeElement.getBoundingClientRect().width / 4.0;
   }
 }

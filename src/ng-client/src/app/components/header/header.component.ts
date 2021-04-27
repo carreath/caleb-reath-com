@@ -11,28 +11,6 @@ import { IntroComponent } from '../intro/intro.component';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   animations: [
-    trigger('header_trigger', [
-      state('relative', style({
-        position: "absolute",
-        top: "50%"
-      })),
-      state('sticky', style({
-        position: "fixed",
-        top: "0px"
-      }))
-    ]),
-    trigger('header_content_trigger', [
-      state('relative', style({
-      })),
-      state('sticky', style({
-      }))
-    ]),
-    trigger('navigation', [
-      state('relative', style({
-      })),
-      state('sticky', style({
-      }))
-    ]),
     trigger('fade', [
       state("hidden", style({opacity: 0})),
       transition('hidden => show', [
@@ -47,6 +25,7 @@ import { IntroComponent } from '../intro/intro.component';
 })
 export class HeaderComponent implements OnInit {
   @Input() component_list;
+  @ViewChild("Header", { read: ElementRef }) this_component: ElementRef;
 
   themingSubscription: Subscription;
   isLight = true;
@@ -74,7 +53,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.themingSubscription = this.themingService.theme.subscribe((theme: string) => {
-      console.log(theme)
       this.isLight = theme === "light-theme";
     });
   }
@@ -99,12 +77,6 @@ export class HeaderComponent implements OnInit {
         this.nav++;
       }
     });
-
-    if (window.pageYOffset >= window.innerHeight * 0.5) {
-      this.state = "sticky"
-    } else {
-      this.state = "relative"
-    }
 
     if (this.links[0].state === "hidden" && this.component_list[0].this_component.nativeElement.getBoundingClientRect().y <= window.innerHeight * 0.6) {
       this.fadeIn();

@@ -2,7 +2,7 @@
     <app-home style="height: 100%"></app-home>
 </div>
 <div class="flex-body">
-    <div class="flex-header" [@header_trigger]="state">
+    <div class="flex-header" [ngStyle]="{ 'top': headerTop }" [@header_trigger]="state">
         <app-header [component_list]="component_list" (scrollToComponent)="scrollTo($event)"></app-header>
     </div>
     <div class="component-container first-component">

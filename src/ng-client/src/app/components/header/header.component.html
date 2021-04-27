@@ -1,8 +1,6 @@
 <!-- Animations implementation of position: sticky [@header_trigger]="state"-->
-<mat-sidenav-container class="nav-container">
-    <mat-sidenav #sidenav mode="side" opened class="nav"
-        [fixedInViewport]="true" [fixedTopGap]="0"
-        [fixedBottomGap]="0" style="display: flex;">
+<mat-sidenav-container #Header class="nav-container">
+    <mat-sidenav #sidenav mode="side" opened class="nav">
         <div class="header-body">
             <div class="links-body">
                 <div class="list-container" style="height: 100%; width: 100%">

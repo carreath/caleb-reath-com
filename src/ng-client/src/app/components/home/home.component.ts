@@ -79,7 +79,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
   ]
 })
 export class HomeComponent implements OnInit {
-  @ViewChild("Intro", { read: ElementRef }) this_component: ElementRef;
+  @ViewChild("Home", { read: ElementRef }) this_component: ElementRef;
   
   themingSubscription: Subscription;
 
@@ -99,7 +99,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.themingSubscription = this.themingService.theme.subscribe((theme: string) => {
-      console.log(theme)
       this.isLight = theme === "light-theme";
     });
   }

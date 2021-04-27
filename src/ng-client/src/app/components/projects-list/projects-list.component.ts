@@ -96,31 +96,31 @@ export class ProjectsListComponent implements OnInit {
     },{
       name: "My Personal Portfolio Website",
       subtitle: "Made with Angular 11, Google Cloud, and Firebase",
-      image: "A",
+      image: "avatar.png",
       description: "My personal portfolio website is a project I have created to develop and display my skills to anyone who visits. I made it using my preferred web framework Angular 11 and I am hosting it using services provided by Google Cloud and Firebase. ",
       url: "https://github.com/carreath/caleb-reath-com"
     },{
       name: "My Personal Portfolio Website",
       subtitle: "Made with Angular 11, Google Cloud, and Firebase",
-      image: "A",
+      image: "avatar.png",
       description: "My personal portfolio website is a project I have created to develop and display my skills to anyone who visits. I made it using my preferred web framework Angular 11 and I am hosting it using services provided by Google Cloud and Firebase. ",
       url: "https://github.com/carreath/caleb-reath-com"
     },{
       name: "My Personal Portfolio Website",
       subtitle: "Made with Angular 11, Google Cloud, and Firebase",
-      image: "A",
+      image: "avatar.png",
       description: "My personal portfolio website is a project I have created to develop and display my skills to anyone who visits. I made it using my preferred web framework Angular 11 and I am hosting it using services provided by Google Cloud and Firebase. ",
       url: "https://github.com/carreath/caleb-reath-com"
     },{
       name: "My Personal Portfolio Website",
       subtitle: "Made with Angular 11, Google Cloud, and Firebase",
-      image: "A",
+      image: "avatar.png",
       description: "My personal portfolio website is a project I have created to develop and display my skills to anyone who visits. I made it using my preferred web framework Angular 11 and I am hosting it using services provided by Google Cloud and Firebase. ",
       url: "https://github.com/carreath/caleb-reath-com"
     },{
       name: "My Personal Portfolio Website",
       subtitle: "Made with Angular 11, Google Cloud, and Firebase",
-      image: "A",
+      image: "avatar.png",
       description: "My personal portfolio website is a project I have created to develop and display my skills to anyone who visits. I made it using my preferred web framework Angular 11 and I am hosting it using services provided by Google Cloud and Firebase. ",
       url: "https://github.com/carreath/caleb-reath-com"
     });

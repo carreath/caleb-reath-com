@@ -9,7 +9,7 @@ mat-toolbar[color="warn"] {
     z-index: 10000;
 }
 .nav {
-    display: flex;
+    display: visible !important;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -46,6 +46,7 @@ mat-toolbar[color="warn"] {
 
 .list-container {
     position: relative;
+    overflow-y: hidden
 }
 
 .current-location {
@@ -68,6 +69,7 @@ mat-toolbar[color="warn"] {
 .links-body {
     height: fit-content; 
     margin: auto 40px auto auto;
+    width: 11em;
 }
 
 $animate: all 0.1s ease-in-out;

@@ -6,7 +6,7 @@
         <mat-card-subtitle>{{ project.subtitle }}</mat-card-subtitle>
       </mat-card-header>
       <div class="project-img-container">
-        <img *ngIf="project.image != ''" mat-card-image class="project-img" [src]="project.image" alt="Photo of a Shiba Inu">
+        <img *ngIf="project.image != ''" mat-card-image class="project-img" src="/assets/img/{{project.image}}" alt="Photo of a Shiba Inu">
         <div *ngIf="project.image == ''" style="display: hidden">
           <div style="height: 100px; width: 100px; margin: auto"> <!-- [@shrink]=shrinkState (@shrink.done)="shrinkDone()" -->
               <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(120deg)">

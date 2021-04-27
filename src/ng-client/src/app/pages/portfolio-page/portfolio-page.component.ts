@@ -11,6 +11,8 @@ import { ProjectsListComponent } from 'src/app/components/projects-list/projects
 import { SkillsListComponent } from 'src/app/components/skills-list/skills-list.component';
 import { ContactFormComponent } from 'src/app/components/contact-form/contact-form.component';
 import { ToolsListComponent } from 'src/app/components/tools-list/tools-list.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
+import { HomeComponent } from 'src/app/components/home/home.component';
 
 @Component({
   selector: 'app-portfolio-page',
@@ -20,17 +22,15 @@ import { ToolsListComponent } from 'src/app/components/tools-list/tools-list.com
     trigger('header_trigger', [
       state('relative', style({
         position: "absolute",
-        top: "100%"
+        top: '83.3%'
+      })),
+      state('reactive-relative', style({
+        position: "absolute",
+        top: '100%'
       })),
       state('sticky', style({
         position: "fixed",
-        top: "0px"
-      }))
-    ]),
-    trigger('header_content_trigger', [
-      state('relative', style({
-      })),
-      state('sticky', style({
+        top: "0%"
       }))
     ])
   ]
@@ -39,7 +39,9 @@ export class PortfolioPageComponent implements OnInit {
   @HostBinding('class') public cssClass: string;
 
   component_list = [];
-  @ViewChild(IntroComponent) intro_component;
+  @ViewChild(HomeComponent) home_component: HomeComponent;
+  @ViewChild(HeaderComponent) header_component: HeaderComponent;
+  @ViewChild(IntroComponent) intro_component: ElementRef;
   @ViewChild(EducationComponent) education_component: ElementRef;
   @ViewChild(ProjectsListComponent) projects_component: ElementRef;
   @ViewChild(SkillsListComponent) skills_component: ElementRef;
@@ -49,6 +51,7 @@ export class PortfolioPageComponent implements OnInit {
   themingSubscription: Subscription;
   themes: string[];
   state: string = "unlocked";
+  headerTop = '100%';
 
   constructor(
     private themingService: ThemingService,
@@ -64,15 +67,14 @@ export class PortfolioPageComponent implements OnInit {
   }  
 
   ngAfterViewInit() {
-    console.log(this.intro_component);
-    this.component_list = [
+    setTimeout(() => this.component_list = [
       this.intro_component,
       this.education_component,
       this.projects_component,
       this.skills_component,
       this.tools_component,
       this.contact_me_component
-    ];
+    ]);
   }
 
   changeTheme(theme: string) {
@@ -80,16 +82,20 @@ export class PortfolioPageComponent implements OnInit {
   }
   @HostListener('window:scroll', ['$event']) 
   doSomething(event) {
-    if (window.pageYOffset >= window.innerHeight) {
+    if (window.innerWidth <= 1200 && window.pageYOffset >= this.home_component.this_component.nativeElement.getBoundingClientRect().height) {
       this.state = "sticky"
+    } else if (window.innerWidth > 1200 && window.pageYOffset >= this.home_component.this_component.nativeElement.getBoundingClientRect().height - window.innerHeight / 6) {
+      this.state = "sticky"
+      console.log(window.innerWidth)
+      this.headerTop = (window.innerHeight - 330) / 2 + ' !important';
     } else {
-      this.state = "relative"
+      if (window.innerWidth <= 1200) {
+        this.state = 'reactive-relative';
+      } else {
+        this.state = "relative"
+      }
+      this.headerTop = '100%';
     }
-
-   // $(".fade-item").each(item => {
-      //if ($(this).hasClass(""))
-    //})
-    //console.log()
   }
 
   /**
