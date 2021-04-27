@@ -4,6 +4,7 @@ import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@an
 import anime from 'animejs/lib/anime.es';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { ThemingService } from 'src/app/services/theming.service';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -82,6 +83,7 @@ export class HomeComponent implements OnInit {
   
   themingSubscription: Subscription;
 
+  faCoffee = faCoffee;
   isLight = true;
 
   textFadeState = "hidden";

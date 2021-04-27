@@ -20,7 +20,7 @@ import { ToolsListComponent } from 'src/app/components/tools-list/tools-list.com
     trigger('header_trigger', [
       state('relative', style({
         position: "absolute",
-        top: "85%"
+        top: "100%"
       })),
       state('sticky', style({
         position: "fixed",
@@ -49,7 +49,6 @@ export class PortfolioPageComponent implements OnInit {
   themingSubscription: Subscription;
   themes: string[];
   state: string = "unlocked";
-
 
   constructor(
     private themingService: ThemingService,
@@ -81,7 +80,7 @@ export class PortfolioPageComponent implements OnInit {
   }
   @HostListener('window:scroll', ['$event']) 
   doSomething(event) {
-    if (window.pageYOffset >= window.innerHeight * 0.85) {
+    if (window.pageYOffset >= window.innerHeight) {
       this.state = "sticky"
     } else {
       this.state = "relative"

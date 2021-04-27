@@ -59,9 +59,163 @@ mat-toolbar[color="warn"] {
     border-style: solid;
 }
 
+.header-body {
+    display: flex; 
+    height: 100%; 
+    width: 100%
+}
+
+.links-body {
+    height: fit-content; 
+    margin: auto 40px auto auto;
+}
+
+$animate: all 0.1s ease-in-out;
+
+#links {
+    opacity: 0.95;
+    height: 40px; 
+    padding-top: 15px; 
+    cursor: pointer;
+
+    .link {
+        .underline {
+            cursor: pointer;
+            transition: $animate;
+            &:before,
+            &:after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                width: 0px;
+                height: 3px;
+                margin: 5px 0 0;
+                transition: $animate;
+                transition-duration: 0.25s;
+                opacity: 0;
+                background-color: var(--carnelian);
+            }
+            &:before,
+            &:after {
+              right: 0;
+            }
+        }
+        & .underline.selected {
+            &:before,
+            &:after {
+                width: 100%;
+                opacity: 1;
+            }
+        }
+    }
+}
+
 /* On screens that are 992px or less, set the background color to blue */
 @media screen and (max-width: 1200px) {
     .nav-container {
-        display: none;
+    }
+
+    .header-body {
+        overflow-y: hidden;
+    }
+
+    .side-nav-link {
+        color: white;
+        position: relative;
+        font-size: 1.5em;
+        font-weight: 400;
+        text-decoration-color: var(--ruby-red) !important;
+        right: auto;
+    }
+
+    .list-container {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .links-body {
+        margin: auto;
+        background-color: #1d1d1d;
+        border-radius: 5px;
+        border: 1px solid #660708;
+        width: 100%;
+    }
+
+    .link-body {
+        height: 30px;
+        margin-top: 10px;
+    }
+
+    #links {
+        opacity: 0.95;
+        padding: 0px 20px 0px 20px !important;
+        margin: 0px;
+    
+        .link {
+            .underline {
+                cursor: pointer;
+                transition: $animate;
+                &:before,
+                &:after {
+                    content: "";
+                    position: absolute;
+                    bottom: -10px;
+                    width: 0px;
+                    height: 3px;
+                    margin: 5px 0 0;
+                    transition: $animate;
+                    transition-duration: 0.25s;
+                    opacity: 0;
+                    background-color: var(--carnelian);
+                }
+                &:before {
+                    left: 50%;
+                }
+                &:after {
+                    right: 50%;
+                }
+            }
+            & .underline.selected {
+                &:before,
+                &:after {
+                    width: 100%;
+                    opacity: 1;
+                }
+                &:before,
+                &:after {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 750px) {
+    .side-nav-link {
+        color: white;
+        position: relative;
+        font-size: 0.75em;
+        font-weight: 400;
+        text-decoration-color: var(--ruby-red) !important;
+        right: auto;
+    }
+
+    .list-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-body {
+        margin: auto auto auto auto;
+    }
+
+    
+    #links {
+        opacity: 0.95;
+        padding: 0px 10px 0px 10px !important;
     }
 }

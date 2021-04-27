@@ -1,6 +1,7 @@
-import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { trigger, state, style, transition, animate, keyframes, stagger } from '@angular/animations';
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import anime from 'animejs/lib/anime.es';
 import { Subscription } from 'rxjs';
 import { ThemingService } from 'src/app/services/theming.service';
 import { IntroComponent } from '../intro/intro.component';
@@ -65,8 +66,8 @@ export class HeaderComponent implements OnInit {
 
   scrollTo(index) {
     const element = this.component_list[index].this_component.nativeElement;
-    const yOffset = -element.getBoundingClientRect().height / 6; 
-    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    const yOffset = (window.innerWidth > 1200)? element.getBoundingClientRect().height / 6: 40; 
+    const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
 
     window.scrollTo({top: y, behavior: 'smooth'});
   }
