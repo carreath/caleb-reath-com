@@ -1,14 +1,19 @@
-<mat-grid-list class="component-body container" #Skills [@fade]="state" style="height: 100%; opacity: inherit;" cols="4" rowHeight="150px">
-  <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let skill of skills">
-    <mat-card>
-      <mat-card-content>
-        <p class="card-text">
-          {{ skill.title }}
-        </p>
-        <hr class="card-horiz-line" />
-        <p class="content-style">{{ skill.content }}</p>
-      </mat-card-content>
-    </mat-card>
+<div #Skills class="skill-text">Skills</div>
+<mat-grid-list class="component-body container" style="opacity: inherit;" [cols]="columnCount" [rowHeight]="rowHeight" (window:resize)="onResize($event)">
+  <mat-grid-tile *ngFor="let skillGroup of skillGroups; let i = index" [@fade]="getContainerState(i)" [colspan]="1" [rowspan]="1">
+    <div class="skill-group-container"><div style="margin-top: 10px; margin-bottom: 10px;">{{ skillGroup.title }}</div>
+    <mat-grid-list class="skill-group" cols="1" [rowHeight]="rowHeight / 7">
+      <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let skill of skillGroup.skills; let j = index" [@fade]="getSkillState(i, j)">
+        <mat-card style="width: 100%">
+          <mat-card-content>
+            <p class="card-text">
+              {{ skill.title }}
+            </p>
+            <hr class="card-horiz-line" />
+            <p class="content-style">{{ skill.content }}</p>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list></div>
   </mat-grid-tile>
 </mat-grid-list>
-  

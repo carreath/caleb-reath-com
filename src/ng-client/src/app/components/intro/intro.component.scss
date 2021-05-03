@@ -55,7 +55,7 @@ img {
 }
 
 /* On screens that are 600px or less, set the background color to olive */
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
     .title-body {
         text-align: center;
         font-size: 1em; 
@@ -69,5 +69,9 @@ img {
         line-height: 2em;
         font-size: 1em;
         text-align: left;
+    }
+
+    .image-body {
+        max-width: 75%;
     }
 }

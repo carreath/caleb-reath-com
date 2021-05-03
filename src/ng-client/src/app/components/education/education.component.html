@@ -1,7 +1,40 @@
-<mat-grid-list class="component-body container" cols="4" rowHeight="400px">
-<mat-grid-tile [colspan]="2" [rowspan]="1" class="fade-item"></mat-grid-tile>
-<mat-grid-tile [colspan]="2" [rowspan]="1" class="fade-item"></mat-grid-tile>
-<mat-grid-tile [colspan]="2" [rowspan]="1" class="fade-item"></mat-grid-tile>
-<mat-grid-tile [colspan]="2" [rowspan]="1" class="fade-item"></mat-grid-tile>
-<p #Education>education works!</p>
+<div #Education class="education-text" [@fade]="getState(0)">Education</div>
+<mat-grid-list class="component-body container" [@fade]="getState(0)" cols="16" [rowHeight]="rowHeight" (window:resize)="onResize($event)">
+    <mat-grid-tile [colspan]="reactive_tile_colspan" [rowspan]="1" class="fade-item">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="11" [rowspan]="1" class="fade-item">
+        <div style="height: 100%;" class="item-text education-body">
+            <div>University of New Brunswick</div>
+            <div class="subtitle-1">Bachelor of Computer Science</div>
+            <div class="subtitle-1">Minors in Mathematics</div>
+            <div class="subtitle-2">Major GPA 3.8 / 4.2</div>
+            <div class="subtitle-2">Dean's list for 3 semesters</div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="5 - reactive_tile_colspan" [rowspan]="1" class="fade-item">
+        <div style="height: 100%;" class="date-text">
+            <span>09/2015 - 05/2020</span>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
+<div class="experience-text" [@fade]="getState(1)">Experience</div>
+<mat-grid-list *ngFor="let experience of experience_list; let i = index" [@fade]="getState(i+1)" class="component-body container" cols="16" [rowHeight]="experience.row_height">
+    <mat-grid-tile [colspan]="reactive_tile_colspan" [rowspan]="1" class="fade-item">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="11" [rowspan]="1" class="fade-item">
+        <div style="height: 100%;" class="item-text education-body">
+            <div class="title">{{ experience.primary_text }}</div>
+            <div class="subtitle-1">{{ experience.secondary_text }}</div>
+            <ul style="margin: 0px; padding-left: 35px;">
+                <li *ngFor="let bullet_point of experience.bullet_points">
+                    <div class="subtitle-2">{{ bullet_point }}</div>
+                </li>
+            </ul>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="5 - reactive_tile_colspan" [rowspan]="1" class="fade-item">
+        <div style="height: 100%;" class="date-text">
+            <span>{{ experience.date }}</span>
+        </div>
+    </mat-grid-tile>
 </mat-grid-list>

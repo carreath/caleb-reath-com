@@ -4,9 +4,7 @@
     transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
     display: block;
     position: relative;
-    padding: 16px;
-    border-radius: 4px;
-    box-shadow: 2px 2px #0000002e;
+    height: 100%;
 }
 
 .example-header-image {
@@ -21,7 +19,6 @@
 
 .project-img-container {
     width: 100%;
-    height: 75%;
 }
 .shrink-container {
     height: 34px; 
@@ -45,4 +42,114 @@
 
 .firebase-icon-container {
     transform: rotateZ(0deg)
+}
+
+.project_name {
+
+}
+
+.project_subtitle {
+    font-size: 0.8em;;
+}
+
+mat-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+// Card styling
+.card-text {
+    font-size: 1em;
+    margin: 0px;
+    overflow-wrap: normal;
+}
+
+.content-style {
+    //min-height: 80px;
+    margin: 0px;
+}
+
+.card-horiz-line {
+    margin: 0px;
+    border: 1px solid #68a1e2;
+}
+
+.project-card {
+    height: 100%; 
+    width: 100%; 
+    opacity: inherit;
+}
+
+.project-description {
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+.project-container {
+    width: 100%; 
+    height: 90%;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(68 68 68);
+    box-shadow: 5px 10px var(--rich-black-fogra-39)
+}
+.project-text {
+    width: 100%;
+    height: 1.5em;
+    font-size: 2.5em;
+    font-weight: 200;
+    line-height: 1.25em;
+    padding-top: 50px;
+}
+
+.github-link {
+    position: absolute;
+    width: 30px;
+    top: 0px;
+    right: 0px;
+}
+
+.html-tag {
+    font-size: 2em;
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 1500px) {
+    .project-description {
+        font-size: 0.8em;;
+    }
+    .html-tag {
+        font-size: 1em;
+    }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 750px) {
+    .project-description {
+        font-size: 0.8em;;
+    }
+    .html-tag {
+        font-size: 0.5em;
+    }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 650px) {
+    .project-text {
+        padding-top: 30px;
+    }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 550px) {
+    .project-text {
+        padding-top: 20px;
+    }
+}
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 350px) {
+    .project-text {
+        padding-top: 0px;
+    }
 }

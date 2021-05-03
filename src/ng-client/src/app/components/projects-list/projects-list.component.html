@@ -1,39 +1,43 @@
-<div #Projects [@fade]="state" class="component-body container">
-  <div *ngFor="let project of projects, let i = index">
+<!--mat-grid-list class="component-body container" #Projects [@fade]="state" style="height: 100%; opacity: inherit;" cols="3" [rowHeight]="rowHeight" (window:resize)="onResize($event)">
+  <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let project of projects, let i = index">
     <mat-card class="project-card">
       <mat-card-header>
-        <mat-card-title>{{ project.name }}</mat-card-title>
-        <mat-card-subtitle>{{ project.subtitle }}</mat-card-subtitle>
+        <mat-card-title class="project_name">{{ project.name }}</mat-card-title><br>
+        <mat-card-subtitle class="project_subtitle">{{ project.subtitle }}</mat-card-subtitle>
       </mat-card-header>
-      <div class="project-img-container">
-        <img *ngIf="project.image != ''" mat-card-image class="project-img" src="/assets/img/{{project.image}}" alt="Photo of a Shiba Inu">
-        <div *ngIf="project.image == ''" style="display: hidden">
-          <div style="height: 100px; width: 100px; margin: auto"> <!-- [@shrink]=shrinkState (@shrink.done)="shrinkDone()" -->
+      <div class="project-img-container" [ngStyle]="projectCardStyles"> 
+        <div style="height: 100%; display: hidden">
+          <div *ngIf="project.image != 'portfolio.png'"><img mat-card-image class="project-img" src="/assets/img/{{project.image}}" alt="Photo of {{ project.name }}"></div>
+          <div *ngIf="project.image == 'portfolio.png'">
+            &lt;html&gt;  
+            <div style="height: 100%;">
               <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(120deg)">
-                  <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
-                      <div class="animation-group angular-icon-container icon-container">
-                          <img class="animation-item-1" style="position: absolute; width: 34px;" src="./assets/img/angular-icon.png">
-                      </div>
-                  </div>
+                    <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
+                        <div class="animation-group angular-icon-container icon-container">
+                            <img class="animation-item-1" style="position: absolute; width: 34px;" src="./assets/img/angular-icon.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(240deg)">
+                    <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
+                        <div class="animation-group google-cloud-icon-container icon-container">
+                            <img class="animation-item-2" style="position: absolute; width: 34px;" src="./assets/img/google-cloud-icon.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(0deg)">
+                    <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
+                        <div class="animation-group firebase-icon-container icon-container">
+                            <img class="animation-item-3" style="position: absolute; width: 34px;" src="./assets/img/firebase-icon.png"> 
+                        </div>
+                    </div>
+                </div>
               </div>
-              <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(240deg)">
-                  <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
-                      <div class="animation-group google-cloud-icon-container icon-container">
-                          <img class="animation-item-2" style="position: absolute; width: 34px;" src="./assets/img/google-cloud-icon.png">
-                      </div>
-                  </div>
-              </div>
-              <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(0deg)">
-                  <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
-                      <div class="animation-group firebase-icon-container icon-container">
-                          <img class="animation-item-3" style="position: absolute; width: 34px;" src="./assets/img/firebase-icon.png"> <!-- [@spin]="spinState" -->
-                      </div>
-                  </div>
-              </div>
+              &lt;/html&gt;  
           </div>
         </div>
       </div>
-      <mat-card-content>
+      <mat-card-content style="font-size: 0.8em">
         <p>
           {{ project.description }}
         </p>
@@ -42,5 +46,56 @@
         <button mat-button><a [href]="project.url" target="_blank">GITHUB</a></button>
       </mat-card-actions>
     </mat-card>
-  </div>
-</div>
+  </mat-grid-tile>
+</mat-grid-list-->
+<div #Projects class="project-text">Projects</div>
+<mat-grid-list class="component-body container" style="opacity: inherit;" [cols]="columnCount" [rowHeight]="rowHeight" (window:resize)="onResize($event)">
+  <mat-grid-tile *ngFor="let project of projects; let i = index" [@fade]="getState(i)" [colspan]="1" [rowspan]="1">
+    <div class="project-container">
+      <mat-card class="project-card">
+        <mat-card-header>
+          <mat-card-title class="project_name">{{ project.name }}</mat-card-title><br>
+          <mat-card-subtitle class="project_subtitle">{{ project.subtitle }}</mat-card-subtitle>
+          <a href="{{ project.url }}" target="_blank"><img class="github-link" src="assets/img/github.png"></a>
+        </mat-card-header>
+        <div class="project-img-container" [ngStyle]="projectCardStyles"> 
+          <div style="height: 100%; display: hidden">
+            <div *ngIf="project.image != 'portfolio.png'"><img mat-card-image class="project-img" src="/assets/img/{{project.image}}" alt="Photo of {{ project.name }}"></div>
+            <div style="height: 100%;" *ngIf="project.image == 'portfolio.png'">
+              <div class="html-tag">&lt;html&gt;</div> 
+              <div [ngStyle]="animationStyles">
+                <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(120deg)">
+                    <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
+                        <div class="animation-group angular-icon-container icon-container">
+                            <img class="animation-item-1" style="position: absolute; width: 34px;" src="./assets/img/angular-icon.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(240deg)">
+                    <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
+                        <div class="animation-group google-cloud-icon-container icon-container">
+                            <img class="animation-item-2" style="position: absolute; width: 34px;" src="./assets/img/google-cloud-icon.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(0deg)">
+                    <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
+                        <div class="animation-group firebase-icon-container icon-container">
+                            <img class="animation-item-3" style="position: absolute; width: 34px;" src="./assets/img/firebase-icon.png"> <!-- [@spin]="spinState" -->
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="html-tag">&lt;/html&gt;</div>  
+            </div>
+          </div>
+        </div>
+        <mat-card-content class="project-description">
+          <p>
+            {{ project.description }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -96,7 +96,7 @@
     bottom: 0%;
     overflow: hidden;
     width: 120%;
-    height: 500px;
+    height: 550px;
     -webkit-transform: rotate(-9deg);
     -ms-transform: rotate(-9deg);
     transform: rotate(-9deg);
@@ -105,7 +105,7 @@
 }
 
 /* On screens that are 992px or less, set the background color to blue */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1250px) {
     .text {
         font-size: 4em;
     }

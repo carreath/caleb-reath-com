@@ -14,11 +14,11 @@ import { IntroComponent } from '../intro/intro.component';
     trigger('fade', [
       state("hidden", style({opacity: 0})),
       transition('hidden => show', [
-        style({ opacity: 0, top: '100px' }),
-        animate(300, style({ opacity: 1, top: '0px' }))
+        style({ opacity: 0, transform: 'translate(0px, 100px)' }),
+        animate(300, style({ opacity: 1, transform: 'translate(0px)' }))
       ]),
       transition('show => hidden',[
-        style({opacity: 0, top: '100px'})
+        style({opacity: 0, transform: 'translate(0px, 100px)'})
       ]),
     ])
   ]
@@ -37,15 +37,13 @@ export class HeaderComponent implements OnInit {
     {title: "Intro", state: "hidden"},
     {title: "Education", state: "hidden"},
     {title: "Projects", state: "hidden"},
-    {title: "Skills", state: "hidden"},
-    {title: "Tools", state: "hidden"},
-    {title: "Contact Me", state: "hidden"},
+    {title: "Skills", state: "hidden"}
   ]
   @Output() scrollToComponent: EventEmitter<string> = new EventEmitter();
 
   scrollTo(index) {
     const element = this.component_list[index].this_component.nativeElement;
-    const yOffset = (window.innerWidth > 1200)? element.getBoundingClientRect().height / 6: 40; 
+    const yOffset = (window.innerWidth > 1200)? window.innerHeight / 6: 40; 
     const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
 
     window.scrollTo({top: y, behavior: 'smooth'});
@@ -55,6 +53,9 @@ export class HeaderComponent implements OnInit {
     this.themingSubscription = this.themingService.theme.subscribe((theme: string) => {
       this.isLight = theme === "light-theme";
     });
+  }
+
+  ngAfterViewInit() {
   }
 
   constructor(private themingService: ThemingService, fb: FormBuilder) {
@@ -73,7 +74,7 @@ export class HeaderComponent implements OnInit {
   doSomething(event) {
     this.nav = -1;
     this.component_list.forEach(component => {
-      if (component.this_component.nativeElement.getBoundingClientRect().top - window.innerHeight / 6 <= 0) {
+      if (component.this_component.nativeElement.getBoundingClientRect().top - window.innerHeight / 3 <= 0) {
         this.nav++;
       }
     });
@@ -88,11 +89,9 @@ export class HeaderComponent implements OnInit {
   }
 
   fadeIn() {
-    this.links[0].state = "show";
+    setTimeout(() => {this.links[0].state = "show"});
     setTimeout(() => {this.links[1].state = "show"}, 100);
     setTimeout(() => {this.links[2].state = "show"}, 200);
     setTimeout(() => {this.links[3].state = "show"}, 300);
-    setTimeout(() => {this.links[4].state = "show"}, 400);
-    setTimeout(() => {this.links[5].state = "show"}, 500);
   }
 }

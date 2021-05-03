@@ -13,11 +13,11 @@ import { ThrowStmt } from '@angular/compiler';
     trigger('fade', [
       state("hidden", style({opacity: 0})),
       transition('hidden => show', [
-        style({ opacity: 0, top: '100px' }),
-        animate(700, style({ opacity: 1, top: '0px' }))
+        style({ opacity: 0, transform: 'translate(0px, 100px)' }),
+        animate(300, style({ opacity: 1, transform: 'translate(0px)' }))
       ]),
       transition('show => hidden',[
-        style({opacity: 0, top: '100px'})
+        style({opacity: 0, transform: 'translate(0px, 100px)'})
       ]),
     ])
   ]
@@ -30,6 +30,7 @@ export class IntroComponent implements OnInit {
   imageColumns = 2;
   rowHeight = 100;
   titleRowSpan = 4;
+  bodyRowSpan = 4;
 
   constructor(private dataService: DataService) { }
  
@@ -49,11 +50,33 @@ export class IntroComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event']) 
   onScroll(event) {
-    if (this.state === "hidden" && this.this_component.nativeElement.getBoundingClientRect().y <= window.innerHeight * 0.6) {
+    if (this.state === "hidden" && this.this_component.nativeElement.getBoundingClientRect().y <= window.innerHeight * 0.7) {
+      console.log("show");
       this.state = "show";
-    } else if (this.state === "show" && this.this_component.nativeElement.getBoundingClientRect().y >= window.innerHeight) {
+      this.fadeInRow();
+    } else if (this.state === "show" && this.this_component.nativeElement.getBoundingClientRect().y > window.innerHeight) {
+      console.log("hide");
       this.state = "hidden";
+      this.introStates.forEach((project) => {
+        project.state = "hidden";
+      })
     }
+  }
+
+  introStates = [
+    {state: "hidden"},
+    {state: "hidden"},
+    {state: "hidden"}
+  ]
+
+  getState(index) {
+    return this.introStates[index].state;
+  }
+
+  fadeInRow() {
+    setTimeout(() => {this.introStates[0].state = "show"});
+    setTimeout(() => {this.introStates[1].state = "show"}, 100);
+    setTimeout(() => {this.introStates[2].state = "show"}, 200);
   }
 
   onResize(event) {
@@ -66,6 +89,9 @@ export class IntroComponent implements OnInit {
       this.columnCount = 1;
       this.imageColumns = 1;
       this.titleRowSpan = 2;
+      if (window.innerWidth <= 500) {
+        this.bodyRowSpan = 3;
+      }
     } else {
       this.columnCount = 3;
       this.imageColumns = 2;

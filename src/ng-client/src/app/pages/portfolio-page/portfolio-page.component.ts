@@ -45,8 +45,6 @@ export class PortfolioPageComponent implements OnInit {
   @ViewChild(EducationComponent) education_component: ElementRef;
   @ViewChild(ProjectsListComponent) projects_component: ElementRef;
   @ViewChild(SkillsListComponent) skills_component: ElementRef;
-  @ViewChild(ToolsListComponent) tools_component: ElementRef;
-  @ViewChild(ContactFormComponent) contact_me_component: ElementRef;
   
   themingSubscription: Subscription;
   themes: string[];
@@ -71,9 +69,7 @@ export class PortfolioPageComponent implements OnInit {
       this.intro_component,
       this.education_component,
       this.projects_component,
-      this.skills_component,
-      this.tools_component,
-      this.contact_me_component
+      this.skills_component
     ]);
   }
 
@@ -86,7 +82,6 @@ export class PortfolioPageComponent implements OnInit {
       this.state = "sticky"
     } else if (window.innerWidth > 1200 && window.pageYOffset >= this.home_component.this_component.nativeElement.getBoundingClientRect().height - window.innerHeight / 6) {
       this.state = "sticky"
-      console.log(window.innerWidth)
       this.headerTop = (window.innerHeight - 330) / 2 + ' !important';
     } else {
       if (window.innerWidth <= 1200) {
@@ -109,6 +104,7 @@ export class PortfolioPageComponent implements OnInit {
     if (themeClassesToRemove.length) {
       overlayContainerClasses.remove(...themeClassesToRemove);
     }
+
     overlayContainerClasses.add(this.cssClass);
   }
 

@@ -1,26 +1,37 @@
-<div style="width: 100%; height: 100%" class="primary">
+<div style="width: 100%; height: 100%" class="primary light-secondary">
     <app-home style="height: 100%"></app-home>
 </div>
 <div class="flex-body">
     <div class="flex-header" [ngStyle]="{ 'top': headerTop }" [@header_trigger]="state">
         <app-header [component_list]="component_list" (scrollToComponent)="scrollTo($event)"></app-header>
     </div>
-    <div class="component-container first-component">
+    <div class="component-container light-secondary first-component" style="z-index: 1;">
         <app-intro style="width:100%"></app-intro>
     </div>
     <div class="component-container light-secondary">
         <app-education style="width:100%"></app-education>
     </div>
-    <div class="component-container">
+    <div class="component-container light-secondary">
         <app-projects-list style="width:100%"></app-projects-list>
     </div>
     <div class="component-container light-secondary">
         <app-skills-list style="width:100%"></app-skills-list>
     </div>
-    <div class="component-container">
-        <app-tools-list style="width:100%"></app-tools-list>
-    </div>
 </div>
 <div class="flex-footer primary">
-    <app-contact-form style="width:100%"></app-contact-form>
+    <mat-grid-list class="component-body container" style="padding: 0px 25% 0px 25%;" style="opacity: inherit;" cols="5" [rowHeight]="100">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <a href="https://github.com/carreath" target="_blank"><img style="width: 30px;" src="assets/img/github.png"></a>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <a href="https://www.linkedin.com/in/calebreath/" target="_blank"><img style="width: 30px;" src="assets/img/linked-in.png"></a>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <a href="mailto:carreath@icloud.com" target="_blank"><img style="width: 30px;" src="assets/img/email.png"></a>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+        </mat-grid-tile>
+    </mat-grid-list>
 </div>
