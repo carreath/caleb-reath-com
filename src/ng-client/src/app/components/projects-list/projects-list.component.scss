@@ -1,6 +1,4 @@
 .project-card {
-    max-width: 400px;
-
     transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
     display: block;
     position: relative;
@@ -21,15 +19,43 @@
     width: 100%;
 }
 .shrink-container {
-    height: 34px; 
-    width: 34px; 
+    height: 68px; 
+    width: 68px; 
     position: absolute; 
 }
 
 .icon-container {
-    height: 34px; 
-    width: 34px; 
+    height: 68px; 
+    width: 68px; 
     position: absolute; 
+}
+
+.animation-containter {
+    height: inherit;
+    width: 68px; 
+    margin: auto; 
+    position: absolute; 
+}
+.animation-containter-1 {
+    height: inherit;
+    width: 68px; 
+    margin: auto; 
+    position: absolute; 
+    transform: translate(50px) rotateZ(120deg)
+}
+.animation-containter-2 {
+    height: inherit;
+    width: 68px; 
+    margin: auto; 
+    position: absolute; 
+    transform: translate(50px) rotateZ(240deg)
+}
+.animation-containter-3 {
+    height: inherit;
+    width: 68px; 
+    margin: auto; 
+    position: absolute; 
+    transform: translate(50px) rotateZ(0deg)
 }
 
 .angular-icon-container {

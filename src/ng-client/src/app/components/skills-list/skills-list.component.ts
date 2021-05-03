@@ -24,13 +24,10 @@ import { SKILLS } from './skills';
 })
 export class SkillsListComponent implements OnInit {
   constructor(
-    private titleService: Title, 
     private metaTagService: Meta
   ) { }
   rowHeight = 250;
   columnCount = 3;
-
-  title = "List of skills";
 
   containerStates = [
     {
@@ -213,7 +210,6 @@ export class SkillsListComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.titleService.setTitle(this.title);
     this.metaTagService.updateTag({
       name: "skills",
       content: "andrewbateman.org",

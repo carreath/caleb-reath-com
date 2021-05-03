@@ -64,24 +64,24 @@
             <div style="height: 100%;" *ngIf="project.image == 'portfolio.png'">
               <div class="html-tag">&lt;html&gt;</div> 
               <div [ngStyle]="animationStyles">
-                <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(120deg)">
+                <div class="animation-container" style="height: inherit; width: 68px; margin: auto; position: absolute; transform: rotateZ(120deg)">
                     <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
                         <div class="animation-group angular-icon-container icon-container">
-                            <img class="animation-item-1" style="position: absolute; width: 34px;" src="./assets/img/angular-icon.png">
+                            <img class="animation-item-1" style="position: absolute; width: 68px;" src="./assets/img/angular-icon.png">
                         </div>
                     </div>
                 </div>
-                <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(240deg)">
+                <div class="animation-container" style="height: inherit; width: 68px; margin: auto; position: absolute; transform: rotateZ(240deg)">
                     <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
                         <div class="animation-group google-cloud-icon-container icon-container">
-                            <img class="animation-item-2" style="position: absolute; width: 34px;" src="./assets/img/google-cloud-icon.png">
+                            <img class="animation-item-2" style="position: absolute; width: 68px;" src="./assets/img/google-cloud-icon.png">
                         </div>
                     </div>
                 </div>
-                <div class="animation-container" style="height: inherit; width: 34px; margin: auto; position: absolute; transform: translate(34px) rotateZ(0deg)">
+                <div class="animation-container" style="height: inherit; width: 68px; margin: auto; position: absolute; transform: rotateZ(0deg)">
                     <div class="shrink-container" [@shrink]=shrinkState (@shrink.done)="shrinkDone('blue')">
                         <div class="animation-group firebase-icon-container icon-container">
-                            <img class="animation-item-3" style="position: absolute; width: 34px;" src="./assets/img/firebase-icon.png"> <!-- [@spin]="spinState" -->
+                            <img class="animation-item-3" style="position: absolute; width: 68px;" src="./assets/img/firebase-icon.png"> <!-- [@spin]="spinState" -->
                         </div>
                     </div>
                 </div>

@@ -163,41 +163,58 @@ export class ProjectsListComponent implements OnInit {
       'margin': "auto",
       'font-size': 2 / this.columnCount + "em"
     }
+
+    let animWidth = size - 40;
+    if (animWidth > 280) {
+      animWidth = 280;
+    }
+
     this.animationStyles = {
-      'width': size / 2 + "px",
-      'height': size / 2 + "px",
-      'min-width': size / 2 + "px",
-      'min-height': size / 2 + "px",
-      'max-width': size / 2 + "px",
-      'max-height': size / 2 + "px",
-      'margin': (size / 5) + "px 0px " + (size / 8) + "px 25%",
+      'width': "68px",
+      'height': animWidth + "px",
+      'min-width': "68px",
+      'min-height': animWidth + "px",
+      'max-width': "68px",
+      'max-height': animWidth + "px",
+      'margin': ((size - 40 - animWidth) / 2) + "px auto",
       'font-size': "1em"
     }
   }
 
   setColumnCount() {
-    if (window.innerWidth <= 370) {
+    if (window.innerWidth <= 275) {
       this.columnCount = 1;
-      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.78;
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.98;
+    } else if (window.innerWidth <= 300) {
+      this.columnCount = 1;
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.68;
+    } else if (window.innerWidth <= 340) {
+      this.columnCount = 1;
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.58;
+    } else if (window.innerWidth <= 370) {
+      this.columnCount = 1;
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.48;
     } else if (window.innerWidth <= 500) {
       this.columnCount = 1;
-      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.5;
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.35;
     } else if (window.innerWidth <= 720) {
       this.columnCount = 1;
-      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.35;
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.25;
     } else if (window.innerWidth <= 1080) {
       this.columnCount = 2;
-      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 0.8;
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 0.75;
     } else if (window.innerWidth <= 1250) {
       this.columnCount = 2;
-      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 0.75;
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 0.67;
     } else if (window.innerWidth <= 1500) {
       this.columnCount = 2;
-      this.rowHeight = 550;
-      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 0.85;
-    } else {
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 0.75;
+    } else if (window.innerWidth <= 1920) {
       this.columnCount = 3;
       this.rowHeight = 550;
+    } else {
+      this.columnCount = 3;
+      this.rowHeight = 600;
     }
   }
 
@@ -264,6 +281,13 @@ export class ProjectsListComponent implements OnInit {
   }
 
   animationContainerSpin(duration, easeFunction) {
+    let size = ((this.this_component.nativeElement.getBoundingClientRect().width - 40) / this.columnCount) - 20;
+    
+    let animWidth = size / 1.5
+    if (size / 1.5 < 160) {
+      animWidth = size - 20;
+    }
+
     this.animationContainerTimeline = anime.timeline({ loop: true })
       .add({
         targets: '.animation-container',
