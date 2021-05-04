@@ -135,6 +135,9 @@ export class ProjectsListComponent implements OnInit {
   projectCardStyles = {}
   animationStyles = {}
   columnCount = 3;
+  descriptionHeight = {
+    'height': '200px'
+  }
 
 
   @HostListener('window:scroll', ['$event'])
@@ -183,24 +186,28 @@ export class ProjectsListComponent implements OnInit {
       'margin': ((size - 40 - animWidth) / 2) + "px auto",
       'font-size': "1em"
     }
+
+    this.descriptionHeight = {
+      'height': this.rowHeight - size - 100 + 'px'
+    }
   }
 
   setColumnCount() {
     if (window.innerWidth <= 275) {
       this.columnCount = 1;
-      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.98;
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 2;
     } else if (window.innerWidth <= 300) {
       this.columnCount = 1;
-      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.68;
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.7;
     } else if (window.innerWidth <= 340) {
       this.columnCount = 1;
-      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.58;
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.6;
     } else if (window.innerWidth <= 370) {
       this.columnCount = 1;
       this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.48;
     } else if (window.innerWidth <= 500) {
       this.columnCount = 1;
-      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.35;
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.38;
     } else if (window.innerWidth <= 720) {
       this.columnCount = 1;
       this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 1.25;
@@ -212,7 +219,7 @@ export class ProjectsListComponent implements OnInit {
       this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 0.67;
     } else if (window.innerWidth <= 1500) {
       this.columnCount = 2;
-      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 0.75;
+      this.rowHeight = this.this_component.nativeElement.getBoundingClientRect().width * 0.8;
     } else if (window.innerWidth <= 1920) {
       this.columnCount = 3;
       this.rowHeight = 550;

@@ -17,6 +17,7 @@
 
 .project-img-container {
     width: 100%;
+    margin-top: 10px;
 }
 .shrink-container {
     height: 68px; 
@@ -110,6 +111,7 @@ mat-card {
 .project-description {
     font-size: 1em;
     line-height: 1.5em;
+    margin-top: 10px;
 }
 
 .project-container {
@@ -139,7 +141,6 @@ mat-card {
 .html-tag {
     font-size: 2em;
 }
-
 /* On screens that are 600px or less, set the background color to olive */
 @media screen and (max-width: 1500px) {
     .project-description {

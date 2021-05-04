@@ -90,11 +90,11 @@
             </div>
           </div>
         </div>
-        <mat-card-content class="project-description">
+        <div [ngStyle]="descriptionHeight" class="project-description">
           <p>
             {{ project.description }}
           </p>
-        </mat-card-content>
+        </div>
       </mat-card>
     </div>
   </mat-grid-tile>
