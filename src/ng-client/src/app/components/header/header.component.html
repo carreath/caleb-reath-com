@@ -5,9 +5,9 @@
             <div class="links-body">
                 <div class="list-container" style="height: 100%; width: 100%">
                     <!--div class="current-location"></div-->
-                    <div id="links" *ngFor="let link of links; let i = index">
+                    <div id="links" *ngFor="let link of links; let i = index" (click)="scrollTo(i)">
                         <div class="link-body">
-                            <a id="{{ 'link-' + i }}" class="side-nav-link link" routerLinkActive="active" [@fade]="getState(i)" (click)="scrollTo(i)"><span class="underline" [ngClass]="{'selected': nav == i }">{{ link.title }}</span></a> 
+                            <a id="{{ 'link-' + i }}" class="side-nav-link link" routerLinkActive="active" [@fade]="getState(i)"><span class="underline" [ngClass]="{'selected': nav == i }">{{ link.title }}</span></a> 
                         </div> 
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Skill } from 'src/app/interfaces/skill.interface';
 import { SKILLS } from './skills';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-skills-list',
@@ -214,6 +215,9 @@ export class SkillsListComponent implements OnInit {
       name: "skills",
       content: "andrewbateman.org",
     });
+    setTimeout(() => {
+      this.onResize(null);
+    });
   }
 
   trackByFn(index: number, skill: Skill): number {
@@ -227,10 +231,8 @@ export class SkillsListComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event']) 
   onScroll(event) {
-    if (this.state === "hidden" && this.this_component.nativeElement.getBoundingClientRect().y <= window.innerHeight * 0.7) {
-      this.state = "show";
-      this.fadeInContainers()
-    } else if (this.state === "show" && this.this_component.nativeElement.getBoundingClientRect().y > window.innerHeight) {
+    console.log(this.this_component.nativeElement.getBoundingClientRect().y)
+    if (this.state === "show" && this.this_component.nativeElement.getBoundingClientRect().y > window.innerHeight) {
       this.state = "hidden";
       this.containerStates.forEach((container) => {
         container.state = "hidden";
@@ -239,6 +241,13 @@ export class SkillsListComponent implements OnInit {
         })
       })
     }
+    let root = this;
+    $('.skill-group-container').each(function(index, el ){
+      if (root.containerStates[index].state == 'hidden' && el.getBoundingClientRect().top - window.innerHeight * 0.9 <= 0) {
+        root.state = "show";
+        root.fadeInContainers(index);
+      }
+    });
   }
 
   getContainerState(containerIndex) {
@@ -249,31 +258,39 @@ export class SkillsListComponent implements OnInit {
     return this.containerStates[containerIndex].skillStates[skillIndex].state;
   }
 
-  fadeInContainers() {
-    setTimeout(() => {
-      this.containerStates[0].state = "show"
-      this.fadeInSkills(0)
-    });
-    setTimeout(() => {
-      this.containerStates[1].state = "show"
-      this.fadeInSkills(1)
-    }, 100);
-    setTimeout(() => {
-      this.containerStates[2].state = "show"
-      this.fadeInSkills(2)
-    }, 200);
-    setTimeout(() => {
-      this.containerStates[3].state = "show"
-      this.fadeInSkills(3)
-    }, 300);
-    setTimeout(() => {
-      this.containerStates[4].state = "show"
-      this.fadeInSkills(4)
-    }, 400);
-    setTimeout(() => {
-      this.containerStates[5].state = "show"
-      this.fadeInSkills(5)
-    }, 500);
+  fadeInContainers(containerIndex) {
+    switch(containerIndex) {
+      case 5: 
+        setTimeout(() => {
+          this.containerStates[5].state = "show"
+          this.fadeInSkills(5)
+        });
+      case 4: 
+        setTimeout(() => {
+          this.containerStates[4].state = "show"
+          this.fadeInSkills(4)
+        });
+      case 3: 
+        setTimeout(() => {
+          this.containerStates[3].state = "show"
+          this.fadeInSkills(3)
+        });
+      case 2: 
+        setTimeout(() => {
+          this.containerStates[2].state = "show"
+          this.fadeInSkills(2)
+        });
+      case 1: 
+        setTimeout(() => {
+          this.containerStates[1].state = "show"
+          this.fadeInSkills(1)
+        });
+      case 0: 
+        setTimeout(() => {
+          this.containerStates[0].state = "show"
+          this.fadeInSkills(0)
+        });
+    }
   }
 
 
@@ -290,8 +307,6 @@ export class SkillsListComponent implements OnInit {
   }
 
   setColumnCount() {
-    console.log(window.innerWidth)
-    console.log(this.this_component.nativeElement.getBoundingClientRect())
     if (window.innerWidth <= 460) {
       this.columnCount = 1;
       this.rowHeight = 250;

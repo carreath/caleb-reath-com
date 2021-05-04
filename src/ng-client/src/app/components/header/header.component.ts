@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   nav = 0;
 
   links = [
-    {title: "Intro", state: "hidden"},
+    {title: "About Me", state: "hidden"},
     {title: "Education", state: "hidden"},
     {title: "Projects", state: "hidden"},
     {title: "Skills", state: "hidden"}
@@ -74,7 +74,7 @@ export class HeaderComponent implements OnInit {
   doSomething(event) {
     this.nav = -1;
     this.component_list.forEach(component => {
-      if (component.this_component.nativeElement.getBoundingClientRect().top - window.innerHeight / 3 <= 0) {
+      if (component.this_component.nativeElement.getBoundingClientRect().top - window.innerHeight / 2 <= 0) {
         this.nav++;
       }
     });

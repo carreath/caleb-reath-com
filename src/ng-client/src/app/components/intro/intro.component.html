@@ -14,8 +14,13 @@
         </div>
     </mat-grid-tile>  
     <mat-grid-tile [@fade]="getState(2)" [colspan]="columnCount" [rowspan]="bodyRowSpan" class="fade-item" style="align-items: baseline !important;">
-        <p class="intro-body">
-            Hello, my name is Caleb. I am a Full-Stack Web Developer currently employed at Tarka Labs. I am extremely passionate about programming and I often practice problem solving on Kattis. I graduated from the University of New Brunswick in May 2020 on the dean’s list with a Bachelor of Computer Science and a Minor in Mathematics.
-        </p>
+        <div #IntroBody class="intro-body">
+            <p>
+                Hello, my name is Caleb. I am a Full-Stack Web Developer currently employed at Tarka Labs, I graduated with my Bachelor of Computer Science from the University of New Brunswick in May 2020. 
+            </p>
+            <p>
+                I have three years total of web development experience with various front-end and back-end technologies. I enjoy working on cutting edge projects because it allows me to expand my development skill set.
+            </p>
+        </div>
     </mat-grid-tile>
 </mat-grid-list>

@@ -1,5 +1,6 @@
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import * as $ from 'jquery';
 
 import anime from 'animejs/lib/anime.es';
 import { DataService } from '../../services/data.service';
@@ -138,17 +139,20 @@ export class ProjectsListComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
-    if (this.state === "hidden" && this.this_component.nativeElement.getBoundingClientRect().y <= window.innerHeight * 0.7) {
-      console.log("show");
-      this.state = "show";
-      this.fadeInRow(0);
-    } else if (this.state === "show" && this.this_component.nativeElement.getBoundingClientRect().y > window.innerHeight) {
+    if (this.state === "show" && this.this_component.nativeElement.getBoundingClientRect().y > window.innerHeight) {
       console.log("hide");
       this.state = "hidden";
       this.projectStates.forEach((project) => {
         project.state = "hidden";
       })
     }
+    let root = this;
+    $('.project-container').each(function(index, el ){
+      if (root.projectStates[index].state == 'hidden' && el.getBoundingClientRect().top - window.innerHeight * 0.9 <= 0) {
+        root.state = "show";
+        root.fadeInRow(index);
+      }
+    });
   }
 
   onResize(event) {
@@ -268,12 +272,14 @@ export class ProjectsListComponent implements OnInit {
   }
 
   fadeInRow(row) {
-    setTimeout(() => {this.projectStates[0].state = "show"});
-    setTimeout(() => {this.projectStates[1].state = "show"}, 100);
-    setTimeout(() => {this.projectStates[2].state = "show"}, 200);
-    setTimeout(() => {this.projectStates[3].state = "show"}, 300);
-    setTimeout(() => {this.projectStates[4].state = "show"}, 400);
-    setTimeout(() => {this.projectStates[5].state = "show"}, 500);
+    switch (row) {
+      case 5: setTimeout(() => {this.projectStates[5].state = "show"});
+      case 4: setTimeout(() => {this.projectStates[4].state = "show"});
+      case 3: setTimeout(() => {this.projectStates[3].state = "show"});
+      case 2: setTimeout(() => {this.projectStates[2].state = "show"});
+      case 1: setTimeout(() => {this.projectStates[1].state = "show"});
+      case 0: setTimeout(() => {this.projectStates[0].state = "show"});
+    }
   }
 
   startAll() {

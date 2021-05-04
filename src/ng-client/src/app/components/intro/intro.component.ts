@@ -24,24 +24,27 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class IntroComponent implements OnInit {
   @ViewChild("Intro", { read: ElementRef }) this_component: ElementRef;
+  @ViewChild("IntroBody", { read: ElementRef }) this_body_component: ElementRef;
   @ViewChild("IntroImageContainer", { read: ElementRef }) this_image_component: ElementRef;
   $profile: Observable<any>;
   columnCount = 3;
   imageColumns = 2;
   rowHeight = 100;
   titleRowSpan = 4;
-  bodyRowSpan = 4;
+  bodyRowSpan = 1;
 
   constructor(private dataService: DataService) { }
  
   ngOnInit() {
     this.$profile = this.dataService.createCollection('profile');
+    setTimeout(() => {
+      this.onResize(null);
+    });
   }
 
   ngAfterViewInit() {
-    this.setColumnCount();
     setTimeout(() => {
-      this.setImageSize()
+      this.onResize(null);
     });
   }
 
@@ -80,8 +83,11 @@ export class IntroComponent implements OnInit {
   }
 
   onResize(event) {
-    this.setColumnCount();
+    console.log(this.rowHeight)
     this.setImageSize();
+    console.log(this.rowHeight)
+    this.setColumnCount();
+    console.log(this.rowHeight)
   }
 
   setColumnCount() {
@@ -89,14 +95,16 @@ export class IntroComponent implements OnInit {
       this.columnCount = 1;
       this.imageColumns = 1;
       this.titleRowSpan = 2;
-      if (window.innerWidth <= 500) {
-        this.bodyRowSpan = 3;
-      }
     } else {
       this.columnCount = 3;
       this.imageColumns = 2;
       this.titleRowSpan = 4;
     }
+
+    console.log(this.this_body_component.nativeElement.getBoundingClientRect().height)
+    console.log(this.rowHeight)
+    console.log(Math.ceil(this.this_body_component.nativeElement.getBoundingClientRect().height / this.rowHeight))
+    this.bodyRowSpan = Math.ceil(this.this_body_component.nativeElement.getBoundingClientRect().height / this.rowHeight);
   }
 
   setImageSize() {
